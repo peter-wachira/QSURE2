@@ -4,11 +4,13 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Qsure</string>
-    <string name="nav_header_subtitle">Qsure App</string>
+    <string name="nav_header_subtitle">#1 Insurance Partner</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
 
     <string name="menu_login">Login</string>
+    <string name="menu_profile">Profile</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

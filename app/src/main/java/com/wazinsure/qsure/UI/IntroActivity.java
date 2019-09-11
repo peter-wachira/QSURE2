@@ -50,8 +50,8 @@ public class IntroActivity extends AppCompatActivity {
 
         if (restorePrefData()) {
 
-            Intent mainActivity = new Intent(getApplicationContext(),Home.class );
-            startActivity(mainActivity);
+            Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class );
+            startActivity(loginActivity);
             finish();
 
 
@@ -61,7 +61,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // hide the action bar
 
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         // ini views
         btnNext = findViewById(R.id.btn_next);

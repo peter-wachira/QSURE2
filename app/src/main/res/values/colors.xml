@@ -17,6 +17,8 @@
 
     <!--background color-->
     <color name="backgroundcolor">#fcfcfc</color>
+    <color name="white">#ffffff</color>
+
 
     <color name="tab_indicator_gray">#c0c0c0</color>
 

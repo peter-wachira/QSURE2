@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wazinsure.qsure">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="true"
@@ -10,9 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".UI.RegistrationActivity"
+            android:theme="@style/AppTheme2">
+        </activity>
+        <activity android:name=".UI.FAQsActivity" />
+        <activity android:name=".UI.QuizActivity" />
+        <activity android:name=".UI.RenewalsActivity" />
+        <activity android:name=".UI.LodgeClaimActivity" />
+        <activity android:name=".UI.MyPoliiesActivity" />
+        <activity android:name=".UI.BuyCoverActivity" />
+        <activity
+            android:name=".UI.LoginActivity"
+            android:theme="@style/AppTheme2"></activity>
+        <activity
             android:name=".UI.Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UI.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +37,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
