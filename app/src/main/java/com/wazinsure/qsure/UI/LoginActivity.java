@@ -228,7 +228,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
         String username = _usernameText.getText().toString();
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 4) {
+        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
             _passwordText.setError("between 0 and 4 numeric characters");
             valid = false;
         }
@@ -239,6 +239,7 @@ public class LoginActivity extends AppCompatActivity {
 
         else {
             _passwordText.setError(null);
+            _usernameText.setError(null);
         }
 
         return valid;
