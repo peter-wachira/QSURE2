@@ -14,15 +14,6 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <TextView
-            android:id="@+id/connectionStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_horizontal"
-            android:textSize="16dip"
-            app:fontFamily="@font/open_sans_regular" />
-
 
         <ImageView
             android:id="@+id/profile_url"
@@ -31,22 +22,38 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
             android:src="@mipmap/claims" />
-
-        <!-- Full name Label -->
+        <!-- Surname name Label -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/fullname"
+            <EditText android:id="@+id/surnameRegnameReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Full Name" />
+                android:hint="Surname" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- ID No -->
+        <!-- First name Label -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/firstnameReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="First Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- Gender Label -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,29 +61,28 @@
             android:layout_marginTop="8dp"
 
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/id_no"
+            <EditText android:id="@+id/genderReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="ID Number"/>
+                android:inputType="text"
+                android:hint="Gender"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-        <!-- Mobile No Label -->
+        <!-- DOB Label -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="8dp"
+
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/mobile_no"
+            <EditText android:id="@+id/dobReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="Mobile Number"/>
+                android:hint="Date of birth"/>
         </com.google.android.material.textfield.TextInputLayout>
+
 
 
 
@@ -97,18 +103,34 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!-- Username Label -->
+        <!-- Mobile Number Label -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/username"
+            <EditText android:id="@+id/mobileNoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Username"/>
+                android:inputType="number"
+                android:hint="Mobile number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- ID No -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="8dp"
+
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/id_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="National ID number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -119,11 +141,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/password"
+            <EditText android:id="@+id/pinReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="Password"/>
+                android:inputType="textPassword"
+                android:hint="Security Pin"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

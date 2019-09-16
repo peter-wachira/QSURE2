@@ -1,9 +1,12 @@
 package com.wazinsure.qsure.UI;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.wazinsure.qsure.R;
@@ -12,7 +15,6 @@ import com.wazinsure.qsure.R;
 import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Looper;
-import android.sax.StartElementListener;
 
 import android.util.Log;
 
@@ -34,14 +36,12 @@ import es.dmoral.toasty.Toasty;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import android.content.Context;
-import android.net.Uri;
-import android.util.Log;
+
 import com.wazinsure.qsure.constants.Constants;
 import com.wazinsure.qsure.service.SaveSharedPreference;
-import com.wazinsure.qsure.UI.LoginActivity;
+
 import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -49,7 +49,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import static android.content.ContentValues.TAG;
+
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
 
 
@@ -65,12 +65,13 @@ public class LoginActivity extends AppCompatActivity {
             .addConverterFactory(GsonConverterFactory.create());
 
 
-    @BindView(R.id.usernamelogin) EditText _usernameText;
-    @BindView(R.id.passwordlogin) EditText _passwordText;
+    @BindView(R.id.usernamelogin) EditText _idNoText;
+    @BindView(R.id.passwordlogin) EditText _pinText;
     @BindView(R.id.btn_login) Button _loginButton;
     @BindView(R.id.link_signup) TextView _signupLink;
     @BindView(R.id.loginForm) ScrollView login_form;
     @BindView(R.id.connectionStatus) TextView connectionText;
+    CheckConnection checkConnection;
 
 
 
@@ -81,12 +82,11 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         connectionText.setText("");
 
-        //Check internet connectivity
-        checkNetworkConnection();
+
 
         // Check if UserResponse is Already Logged In
         if(SaveSharedPreference.getLoggedStatus(getApplicationContext())) {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             Toasty.info(getBaseContext(), " Welcome back !", Toast.LENGTH_SHORT, true).show();
             startActivity(intent);
         } else {
@@ -98,12 +98,19 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                try {
-                    loginInit();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                //Check internet connectivity
+                if (!checkConnection.isConnectedToInternet(getApplicationContext())) {
+                    shownetworkDialog();
+                   }
+                    else {
+                    try{
+                        loginInit();
+
+                    } catch(IOException e){
+                        e.printStackTrace();
+                    } catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -120,22 +127,28 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public boolean checkNetworkConnection(){
-        connectionText.setText("");
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        boolean isConnected = false;
-
-        if(networkInfo != null && (isConnected = networkInfo.isConnected())){
-            connectionText.setText("Network Established");
-        } if (networkInfo == null){
-
-            connectionText.setText("Not Connected");
+    //checking internet connection
+    private void shownetworkDialog() {
+        final  AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.ThemeOverlay_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
         }
-        return isConnected;
-    }
+        builder.setTitle("No Internet")
+                .setMessage("Please make sure you have internet connection")
+                .setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
 
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setCancelable(false)
+
+                .show();
+    }
 
 
     public void loginInit() throws IOException, InterruptedException {
@@ -147,8 +160,10 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+
+
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme);
+                R.style.ThemeOverlay_AppCompat_Dialog);
 
 
         progressDialog.setIndeterminate(true);
@@ -179,9 +194,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void userSignin() throws IOException, InterruptedException {
-        String user_name = _usernameText.getText().toString();
-        String password = _passwordText.getText().toString();
-        login(user_name,password);
+        String id_no = _idNoText.getText().toString();
+        String pin = _pinText.getText().toString();
+        login(id_no,pin);
 
     }
 
@@ -203,7 +218,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent( this, Home.class);
+        Intent intent = new Intent( this, HomeActivity.class);
         startActivity(intent);
         finish();
     }
@@ -214,7 +229,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Toasty.error(getBaseContext(), "Login Failed!", Toast.LENGTH_SHORT, true).show();
+                Toasty.warning(getBaseContext(), "Login Failed!", Toast.LENGTH_SHORT, true).show();
             }
         });
         _loginButton.setEnabled(true);
@@ -225,21 +240,21 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String password = _passwordText.getText().toString();
-        String username = _usernameText.getText().toString();
+        String pin = _pinText.getText().toString();
+        String id_no = _idNoText.getText().toString();
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 0 and 4 numeric characters");
+        if (pin.isEmpty() || pin.length() < 4 || pin.length() > 4) {
+            _pinText.setError("between 0 and 4 numeric characters");
             valid = false;
         }
-        if (username.isEmpty() || username.equals("")){
-            _usernameText.setError("username can not be empty");
+        if (id_no.isEmpty() || id_no.equals("")){
+            _idNoText.setError("Id number can not be empty");
             valid = false;
         }
 
         else {
-            _passwordText.setError(null);
-            _usernameText.setError(null);
+            _pinText.setError(null);
+            _idNoText.setError(null);
         }
 
         return valid;
@@ -291,7 +306,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (status.equals("success")){
                         SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
-                        Intent intent = new Intent(getApplicationContext(), Home.class);
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
                         onLoginSuccess();
 

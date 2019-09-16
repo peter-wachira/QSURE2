@@ -29,21 +29,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
-public class Home extends AppCompatActivity
+public class HomeActivity extends AppCompatActivity
         implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.buy_cover)
-    CardView buyCoverCard;
-    @BindView(R.id.my_policies)
-    CardView myPoliciesCard;
-    @BindView(R.id.lodge_claim)
-    CardView lodgeClaimsCard;
-    @BindView(R.id.renewals)
-    CardView renewalsCard;
-    @BindView(R.id.quiz)
-    CardView  quizCard;
-    @BindView(R.id.faqs)
-    CardView faqsCard;
+//    @BindView(R.id.buy_cover)
+//    CardView buyCoverCard;
+//    @BindView(R.id.my_policies)
+//    CardView myPoliciesCard;
+//    @BindView(R.id.lodge_claim)
+//    CardView lodgeClaimsCard;
+//    @BindView(R.id.renewals)
+//    CardView renewalsCard;
+//    @BindView(R.id.quiz)
+//    CardView  quizCard;
+//    @BindView(R.id.faqs)
+//    CardView faqsCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +62,12 @@ public class Home extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Add click listener to the cards
-        buyCoverCard.setOnClickListener(this);
-        myPoliciesCard.setOnClickListener(this);
-        lodgeClaimsCard.setOnClickListener(this);
-        renewalsCard.setOnClickListener(this);
-        quizCard.setOnClickListener(this);
-        faqsCard.setOnClickListener(this);
+//        buyCoverCard.setOnClickListener(this);
+//        myPoliciesCard.setOnClickListener(this);
+//        lodgeClaimsCard.setOnClickListener(this);
+//        renewalsCard.setOnClickListener(this);
+//        quizCard.setOnClickListener(this);
+//        faqsCard.setOnClickListener(this);
     }
 
 
@@ -82,7 +82,7 @@ public class Home extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the HomeActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -113,10 +113,11 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
-        }else if (id == R.id.nav_login){
-            Intent intent = new Intent( this, LoginActivity.class);
-            startActivity(intent);
         }
+//        }else if (id == R.id.nav_login){
+//            Intent intent = new Intent( this, LoginActivity.class);
+//            startActivity(intent);
+//        }
         else if (id == R.id.nav_share) {
 
         } else if (id == R.id.rate_us) {
@@ -133,24 +134,24 @@ public class Home extends AppCompatActivity
 
         Intent i;
 
-        switch (view.getId()) {
-
-            case R.id.buy_cover :i = new Intent(this,BuyCoverActivity.class);
-            startActivity(i);break;
-            case R.id.my_policies :i= new Intent(this, MyPoliiesActivity.class);
-            startActivity(i);break;
-            case R.id.lodge_claim: i= new Intent(this,LodgeClaimActivity.class);
-            startActivity(i);break;
-            case R.id.renewals: i= new Intent(this, RenewalsActivity.class);
-            startActivity(i);break;
-            case R.id.quiz: i= new Intent(this,QuizActivity.class);
-            startActivity(i);break;
-            case R.id.faqs: i= new Intent(this,FAQsActivity.class);
-            startActivity(i);break;
-
-            default:break;
-
-        }
+//        switch (view.getId()) {
+//
+//            case R.id.buy_cover :i = new Intent(this,BuyCoverActivity.class);
+//            startActivity(i);break;
+//            case R.id.my_policies :i= new Intent(this, MyPoliiesActivity.class);
+//            startActivity(i);break;
+//            case R.id.lodge_claim: i= new Intent(this,LodgeClaimActivity.class);
+//            startActivity(i);break;
+//            case R.id.renewals: i= new Intent(this, RenewalsActivity.class);
+//            startActivity(i);break;
+//            case R.id.quiz: i= new Intent(this,QuizActivity.class);
+//            startActivity(i);break;
+//            case R.id.faqs: i= new Intent(this,FAQsActivity.class);
+//            startActivity(i);break;
+//
+//            default:break;
+//
+//        }
     }
 
 

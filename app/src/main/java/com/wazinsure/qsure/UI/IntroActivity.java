@@ -1,8 +1,10 @@
 package com.wazinsure.qsure.UI;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,10 +20,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.wazinsure.qsure.R;
 import com.wazinsure.qsure.adapters.IntroViewPagerAdapter;
+import com.wazinsure.qsure.helpers.DatabaseHelper;
 import com.wazinsure.qsure.models.IntroScreenItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -32,6 +36,9 @@ public class IntroActivity extends AppCompatActivity {
     int position = 0 ;
     Button btnGetStarted;
     Animation btnAnim ;
+    DatabaseHelper mDatabaseHelper;
+
+
     TextView tvSkip;
 
 
@@ -44,6 +51,7 @@ public class IntroActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mDatabaseHelper = new DatabaseHelper(this);
 
 
         // when this activity is about to be launch we need to check if its openened before or not
@@ -74,9 +82,9 @@ public class IntroActivity extends AppCompatActivity {
 
         final List<IntroScreenItem> mList = new ArrayList<>();
         mList.add(new IntroScreenItem("Buy Cover ","Daily, Monthly, Quarterly ",R.mipmap.buycover));
-        mList.add(new IntroScreenItem("Lodge Claims","Make claim",R.mipmap.claims));
-        mList.add(new IntroScreenItem("Renew Cover","Renew Insurance cover",R.mipmap.renewals));
-        mList.add(new IntroScreenItem("Easy Payment","Convenient payment",R.mipmap.easypay));
+        mList.add(new IntroScreenItem("Lodge Claim","Make a Claim",R.mipmap.claims));
+        mList.add(new IntroScreenItem("Renew Cover","Renew Insurance Cover",R.mipmap.renewals));
+        mList.add(new IntroScreenItem("Easy Payment","Convenient Payment",R.mipmap.easypay));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -151,18 +159,8 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                //open main activity
-
-                Intent mainActivity = new Intent(getApplicationContext(), Home.class);
-                startActivity(mainActivity);
-                // also we need to save a boolean value to storage so next time when the user run the app
-                // we could know that he is already checked the intro screen activity
-                // i'm going to use shared preferences to that process
-                savePrefsData();
-                finish();
-
-
+                //check if there is an existing record
+                viewAllInDb();
 
             }
         });
@@ -177,6 +175,34 @@ public class IntroActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+
+    public void  viewAllInDb(){
+    //retrieve data from SQlite DB
+        Cursor result = mDatabaseHelper.getAllData();
+
+        if(result.getCount()==0){
+            Intent mainActivity = new Intent(getApplicationContext(), RegistrationActivity.class);
+            startActivity(mainActivity);
+            // also we need to save a boolean value to storage so next time when the user run the app
+            // we could know that he is already checked the intro screen activity
+            // i'm going to use shared preferences to that process
+            savePrefsData();
+            finish();
+
+        }
+        else if (result.getCount()!=0){
+
+            Intent mainActivity = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(mainActivity);
+            // also we need to save a boolean value to storage so next time when the user run the app
+            // we could know that he is already checked the intro screen activity
+            // i'm going to use shared preferences to that process
+            savePrefsData();
+            finish();
+        }
 
     }
 
