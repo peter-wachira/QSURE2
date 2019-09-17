@@ -1,10 +1,13 @@
 package com.wazinsure.qsure.UI;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.sax.StartElementListener;
 import android.view.View;
 
 import androidx.cardview.widget.CardView;
@@ -15,12 +18,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.wazinsure.qsure.R;
+import com.wazinsure.qsure.helpers.DatabaseHelper;
 import com.wazinsure.qsure.service.SaveSharedPreference;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.Menu;
 import android.widget.Toast;
@@ -30,26 +35,17 @@ import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
 public class HomeActivity extends AppCompatActivity
-        implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, User_FirsttimeFragment.OnFragmentInteractionListener,User_NotFirstTimeFragment.OnFragmentInteractionListener {
 
-//    @BindView(R.id.buy_cover)
-//    CardView buyCoverCard;
-//    @BindView(R.id.my_policies)
-//    CardView myPoliciesCard;
-//    @BindView(R.id.lodge_claim)
-//    CardView lodgeClaimsCard;
-//    @BindView(R.id.renewals)
-//    CardView renewalsCard;
-//    @BindView(R.id.quiz)
-//    CardView  quizCard;
-//    @BindView(R.id.faqs)
-//    CardView faqsCard;
+    FragmentManager fragmentManager;
+    DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        mDatabaseHelper = new DatabaseHelper(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,15 +57,50 @@ public class HomeActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Add click listener to the cards
-//        buyCoverCard.setOnClickListener(this);
-//        myPoliciesCard.setOnClickListener(this);
-//        lodgeClaimsCard.setOnClickListener(this);
-//        renewalsCard.setOnClickListener(this);
-//        quizCard.setOnClickListener(this);
-//        faqsCard.setOnClickListener(this);
+        initContentHomeFragments();
+
     }
 
+    public void  initContentHomeFragments(){
+        Cursor result = mDatabaseHelper.getAllData();
+
+        fragmentManager = getSupportFragmentManager();
+
+        //retrieve data from SQlite DB
+
+        //check if there are any records
+        if(result.getCount() == 0 ){
+
+
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+
+                @Override
+                public void run() {
+
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, new User_FirsttimeFragment())
+                            .commit();
+
+                }
+            });
+
+        }
+        else if (result.getCount() !=0 ){
+
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, new User_NotFirstTimeFragment())
+                            .commit();
+                }
+            });
+        }
+
+    }
 
 
     @Override
@@ -113,12 +144,21 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
+
         }
 //        }else if (id == R.id.nav_login){
 //            Intent intent = new Intent( this, LoginActivity.class);
 //            startActivity(intent);
 //        }
-        else if (id == R.id.nav_share) {
+        else if (id == R.id.nav_profile) {
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+
+                @Override
+                public void run() {
+                    Intent intent = new Intent(getApplicationContext(),UpdateProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
 
         } else if (id == R.id.rate_us) {
 
@@ -129,30 +169,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onClick(View view) {
 
-        Intent i;
-
-//        switch (view.getId()) {
-//
-//            case R.id.buy_cover :i = new Intent(this,BuyCoverActivity.class);
-//            startActivity(i);break;
-//            case R.id.my_policies :i= new Intent(this, MyPoliiesActivity.class);
-//            startActivity(i);break;
-//            case R.id.lodge_claim: i= new Intent(this,LodgeClaimActivity.class);
-//            startActivity(i);break;
-//            case R.id.renewals: i= new Intent(this, RenewalsActivity.class);
-//            startActivity(i);break;
-//            case R.id.quiz: i= new Intent(this,QuizActivity.class);
-//            startActivity(i);break;
-//            case R.id.faqs: i= new Intent(this,FAQsActivity.class);
-//            startActivity(i);break;
-//
-//            default:break;
-//
-//        }
-    }
 
 
 
@@ -187,5 +204,15 @@ public class HomeActivity extends AppCompatActivity
             },3000);
             twice = true;
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

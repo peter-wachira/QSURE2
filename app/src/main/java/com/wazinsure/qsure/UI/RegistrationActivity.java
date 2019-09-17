@@ -390,7 +390,7 @@ public class RegistrationActivity extends AppCompatActivity {
 //        progressDialog.setIndeterminate(true);
 //        progressDialog.setMessage("Adding user...");
 //        progressDialog.show();
-        new Handler(Looper.getMainLooper()).post(
+        new Handler(Looper.getMainLooper()).postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
@@ -401,7 +401,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         }
                         progressDialog.dismiss();
                     }
-                });
+                },3000);
 
 
 

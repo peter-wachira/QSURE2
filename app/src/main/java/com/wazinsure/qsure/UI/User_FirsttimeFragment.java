@@ -15,12 +15,12 @@ import com.wazinsure.qsure.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link User_Firsttime.OnFragmentInteractionListener} interface
+ * {@link User_FirsttimeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link User_Firsttime#newInstance} factory method to
+ * Use the {@link User_FirsttimeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class User_Firsttime extends Fragment {
+public class User_FirsttimeFragment extends Fragment  implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +32,7 @@ public class User_Firsttime extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public User_Firsttime() {
+    public User_FirsttimeFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +42,11 @@ public class User_Firsttime extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment User_Firsttime.
+     * @return A new instance of fragment User_FirsttimeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static User_Firsttime newInstance(String param1, String param2) {
-        User_Firsttime fragment = new User_Firsttime();
+    public static User_FirsttimeFragment newInstance(String param1, String param2) {
+        User_FirsttimeFragment fragment = new User_FirsttimeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -92,6 +92,11 @@ public class User_Firsttime extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 
     /**

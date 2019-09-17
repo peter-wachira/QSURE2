@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -72,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.loginForm) ScrollView login_form;
     @BindView(R.id.connectionStatus) TextView connectionText;
     CheckConnection checkConnection;
+    SharedPreferences sharedpreferences;
+    public static final String mypreference = "mypref";
+    public static String CustomerID = "";
+
+
+
 
 
 
@@ -144,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(R.mipmap.no_wifi_icon)
                 .setCancelable(false)
 
                 .show();
@@ -166,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                 R.style.ThemeOverlay_AppCompat_Dialog);
 
 
+        progressDialog.setIcon(R.mipmap.loading_icon);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Loggin you in...");
         progressDialog.show();
@@ -245,10 +253,12 @@ public class LoginActivity extends AppCompatActivity {
 
         if (pin.isEmpty() || pin.length() < 4 || pin.length() > 4) {
             _pinText.setError("between 0 and 4 numeric characters");
+            _pinText.requestFocus();
             valid = false;
         }
         if (id_no.isEmpty() || id_no.equals("")){
             _idNoText.setError("Id number can not be empty");
+            _idNoText.requestFocus();
             valid = false;
         }
 
@@ -308,8 +318,8 @@ public class LoginActivity extends AppCompatActivity {
                         SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
+                        saveUserID();
                         onLoginSuccess();
-
                         startActivity(intent);
 
                     }
@@ -322,6 +332,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+        private void saveUserID() {
+        String n = _idNoText.getText().toString();
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(CustomerID, n);
+        editor.commit();
     }
 
 
