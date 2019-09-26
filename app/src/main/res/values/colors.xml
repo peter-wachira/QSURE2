@@ -19,11 +19,15 @@
     <color name="backgroundcolor">#fcfcfc</color>
     <color name="white">#ffffff</color>
 
+    <color  name="card_bg">#fefefe</color>
 
     <color name="tab_indicator_gray">#c0c0c0</color>
 
+    <color name="card_bg_dak_color"></color>
     <color name="intro_title_color">#000000</color>
+    <color  name="content_text_color">#999da4</color>
 
     <color name="intro_description_color">#656565</color>
+
 
 </resources>

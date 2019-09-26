@@ -1,6 +1,8 @@
 package com.wazinsure.qsure.UI;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,8 +39,10 @@ import es.dmoral.toasty.Toasty;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, User_FirsttimeFragment.OnFragmentInteractionListener,User_NotFirstTimeFragment.OnFragmentInteractionListener {
 
+
     FragmentManager fragmentManager;
     DatabaseHelper mDatabaseHelper;
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         mDatabaseHelper = new DatabaseHelper(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -123,6 +128,12 @@ public class HomeActivity extends AppCompatActivity
         }
         if (id == R.id.action_logout) {
             SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
+            sharedpreferences = getSharedPreferences("mypref",
+                    Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.remove("n");
+            editor.remove("k");
+            editor.commit();
             logout();
         }
 
@@ -131,7 +142,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void logout() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivityVolley.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

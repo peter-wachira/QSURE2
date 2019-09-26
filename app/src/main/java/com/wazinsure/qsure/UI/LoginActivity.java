@@ -52,6 +52,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
+import static com.wazinsure.qsure.UI.LoginActivityVolley.CustomerID;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -74,12 +75,8 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.connectionStatus) TextView connectionText;
     CheckConnection checkConnection;
     SharedPreferences sharedpreferences;
-    public static final String mypreference = "mypref";
-    public static String CustomerID = "";
 
-
-
-
+    private String TOKEN;
 
 
     @Override
@@ -127,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegistrationActivityVolley.class);
                 startActivity(intent);
                 finish();
             }
@@ -291,6 +288,7 @@ public class LoginActivity extends AppCompatActivity {
                 .post(body)
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
+//                .header("Authorization","Bearer " + TOKEN)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -312,13 +310,16 @@ public class LoginActivity extends AppCompatActivity {
 
                     responseJSON = new JSONObject(mMessage);
                     String loginStatus = responseJSON.getString("status");
+                    String  token = responseJSON.getString("token");
+                    TOKEN = token;
+
                     String status =loginStatus;
 
                     if (status.equals("success")){
                         SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
-                        saveUserID();
+//                        saveUserID();
                         onLoginSuccess();
                         startActivity(intent);
 
@@ -334,12 +335,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-        private void saveUserID() {
-        String n = _idNoText.getText().toString();
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString(CustomerID, n);
-        editor.commit();
-    }
+//        private void saveUserID() {
+//        String n = _idNoText.getText().toString();
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//        editor.putString(CustomerID, n);
+//        editor.commit();
+//    }
 
 
     public static void backgroundThreadShortToast(final Context context, final String msg) {

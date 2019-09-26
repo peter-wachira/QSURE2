@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_customerUpdate"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
@@ -14,13 +14,15 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView
-            android:layout_width="91dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:id="@+id/photo_url"
-            android:layout_height="72dp"
+            app:civ_border_width="2dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@mipmap/user_icon" />
+            android:src="@mipmap/user_icon"
+            app:civ_border_color="@color/intro_description_color"/>
 
         <!--  IDno Label -->
         <com.google.android.material.textfield.TextInputLayout
@@ -31,6 +33,8 @@
             <EditText android:id="@+id/id_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
                 android:hint="ID Number" />
@@ -43,12 +47,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/first_name"
+
+            <EditText
+                android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:hint="First Name"
                 android:inputType="textCapWords"
-                android:hint="First Name" />
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Last Name -->
@@ -62,7 +71,29 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Last Name" />
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"                android:hint="Last Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Gender -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Gender "
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
+                android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -73,11 +104,35 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
+                android:hint="Location"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/intro_description_color"
+            android:fontFamily="@font/montserrat"
+            android:textSize="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
             <EditText android:id="@+id/dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
                 android:hint="DOB: dd/mm/yyyy" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,12 +143,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/kra_pin"
+
+            <EditText
+                android:id="@+id/kra_pin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="KRA Pin" />
+                android:hint="KRA Pin"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
+                android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Occupation -->
@@ -107,7 +167,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Occupation" />
+                android:hint="Occupation"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Mobile No.-->
@@ -121,7 +184,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Mobile Number" />
+                android:hint="Mobile Number"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -132,29 +198,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/email"
+
+            <EditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:background="@android:color/transparent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--location-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-
-            <EditText
-                android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Location"
-                android:background="@android:color/transparent"
-                android:inputType="textCapWords" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <!--postal Address-->
         <com.google.android.material.textfield.TextInputLayout
@@ -167,7 +224,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="Postal Address" />
+                android:hint="Postal Address"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -184,7 +244,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Postal code"
                 android:background="@android:color/transparent"
-                android:inputType="textCapWords" />
+                android:inputType="textCapWords"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -200,7 +263,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="Town" />
+                android:hint="Town"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -215,7 +282,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="Country" />
+                android:hint="Country"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--nok_fullname-->
@@ -229,7 +299,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="Nok fullname" />
+                android:hint="Nok fullname"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--nok_mobileno-->
@@ -243,7 +316,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Nok Mobile Number " />
+                android:hint="Nok Mobile Number "
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--nok relation-->
@@ -257,7 +333,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:background="@android:color/transparent"
-                android:hint="Nok Relation" />
+                android:hint="Nok Relation"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--agent_code-->
@@ -271,7 +350,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Agent Code" />
+                android:hint="Agent Code"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--agent user code-->
@@ -285,7 +367,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Agent User Code" />
+                android:hint="Agent User Code"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--sales channel-->
@@ -299,8 +384,51 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
-                android:hint="Sales Channel" />
+                android:hint="Sales Channel"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <!--course -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:inputType="textCapWords"
+                android:hint="Course"
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!--institution -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/institution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:inputType="textCapWords"
+                android:hint="Institution "
+                android:textColor="@color/intro_description_color"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
 
 
@@ -313,11 +441,12 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/transparent_bg_bordered"
             android:textColor="@color/colorAccent"
-
-
             android:layout_marginBottom="24dp"
             android:padding="12dp"
             android:text=" Update Profile"/>
+
+
+
 
     </LinearLayout>
 </ScrollView>

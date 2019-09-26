@@ -54,9 +54,10 @@ import static android.content.ContentValues.TAG;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private String TOKEN;
     @BindView(R.id.firstnameReg)
     EditText _firstnameText;
-    @BindView(R.id.surnameRegnameReg)
+    @BindView(R.id.surnameReg)
     EditText _surnameText;
     @BindView(R.id.id_no)
     EditText _idnoText;
@@ -95,7 +96,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Login activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivityVolley.class);
                 startActivity(intent);
             }
         });
@@ -349,6 +350,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     String registrationStatus = responseJSON.getString("status");
                     String status = registrationStatus;
+                    String token = responseJSON.getString("token");
+                    TOKEN = token;
+
                     if (status.equals("success")){
 //                        onRegistrationSuccess();
                         addNewCustomer();
@@ -390,18 +394,18 @@ public class RegistrationActivity extends AppCompatActivity {
 //        progressDialog.setIndeterminate(true);
 //        progressDialog.setMessage("Adding user...");
 //        progressDialog.show();
-        new Handler(Looper.getMainLooper()).postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
+//        new Handler(Looper.getMainLooper()).postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        // On complete call either onLoginSuccess or onLoginFailed
                         try {
                             addNewCustomerRequest( firstname,  last_name, id_no,  dob, mobile_no,  email, resultUri);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        progressDialog.dismiss();
-                    }
-                },3000);
+//                        progressDialog.dismiss();
+//                    }
+//                },3000);
 
 
 
@@ -434,6 +438,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 .post(body)
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
+                .header("Authorization","Bearer "+ TOKEN)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override

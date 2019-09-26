@@ -18,6 +18,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_rate">Rate Us</string>
 
+    <string name="status_from_reponse"> <u><font color='#000fff'>Status:</font></u></string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

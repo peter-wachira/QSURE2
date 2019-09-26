@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.UpdateProfileActivity"></activity>
+        <activity
+            android:name=".UI.LoginActivityVolley"
+            android:theme="@style/AppTheme2"></activity>
+        <activity
+            android:name=".UI.RegistrationActivityVolley"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".UI.UpdateProfileActivity" />
         <activity
             android:name=".UI.RegistrationActivity"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity android:name=".UI.FAQsActivity" />
         <activity android:name=".UI.QuizActivity" />
         <activity android:name=".UI.RenewalsActivity" />
