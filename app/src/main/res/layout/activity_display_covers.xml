@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:id="@+id/root_layout"
-    tools:context=".UI.BuyCoverActivity">
+    tools:context=".UI.DisplayPaCoversActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"

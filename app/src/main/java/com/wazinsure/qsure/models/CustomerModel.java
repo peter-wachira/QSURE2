@@ -1,6 +1,7 @@
 package com.wazinsure.qsure.models;
+import org.parceler.Parcel;
 
-
+@Parcel
 public class CustomerModel {
 
     String customer_id;
@@ -50,6 +51,7 @@ public class CustomerModel {
         this.sales_chanel = sales_chanel;
     }
 
+    public CustomerModel(){}
 
     public String getCustomer_id() {
         return customer_id;

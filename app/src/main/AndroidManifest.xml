@@ -17,8 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".UI.PurchaseCoverActivity"
+            android:label="@string/title_activity_purchase_cover"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".UI.PaCoverDetailActiviy" />
+        <activity
             android:name=".UI.LoginActivityVolley"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".UI.RegistrationActivityVolley"
             android:theme="@style/AppTheme2" />
@@ -31,7 +36,7 @@
         <activity android:name=".UI.RenewalsActivity" />
         <activity android:name=".UI.LodgeClaimActivity" />
         <activity android:name=".UI.MyPoliiesActivity" />
-        <activity android:name=".UI.BuyCoverActivity" />
+        <activity android:name=".UI.DisplayPaCoversActivity" />
         <activity
             android:name=".UI.LoginActivity"
             android:theme="@style/AppTheme2" />

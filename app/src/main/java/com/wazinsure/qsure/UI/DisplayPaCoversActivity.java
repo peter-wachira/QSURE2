@@ -1,6 +1,8 @@
 package com.wazinsure.qsure.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -12,15 +14,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wazinsure.qsure.R;
+import com.wazinsure.qsure.adapters.PaCoverAdapter;
 import com.wazinsure.qsure.models.PaCoverModel;
 import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
 
 
-import butterknife.BindView;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -34,23 +43,37 @@ import java.util.Map;
 
 
 
-public class BuyCoverActivity extends AppCompatActivity {
+public class DisplayPaCoversActivity extends AppCompatActivity {
     private static final String PA_URL = "https://demo.wazinsure.com:4443/api/pacovers";
     private String TOKEN;
     private RecyclerView recyclerView ;
-    public static final String TAG = BuyCoverActivity.class.getSimpleName();
+    public static final String TAG = DisplayPaCoversActivity.class.getSimpleName();
     ArrayList<PaCoverModel> paCoverModelArrayList;
     ProgressDialog progressDialog;
     private JSONArray result;
     SharedPreferences sharedpreferences;
     private String CustomerIDRetrieved;
     private String CustomerID;
+    boolean isDark =false;
+    ConstraintLayout rootLayout;
+    EditText searchInput;
+    FloatingActionButton fabSwitcher;
+    PaCoverAdapter myadapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy_cover);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_display_covers);
+
+        fabSwitcher = findViewById(R.id.fab_switcher);
+        rootLayout = findViewById(R.id.root_layout);
+        searchInput = findViewById(R.id.search_input);
 
 
 
@@ -66,7 +89,89 @@ public class BuyCoverActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading Records ...");
         showDialog();
+        recyclerView = findViewById(R.id.recyclerview);
         getPaCovers();
+
+
+
+        // load theme state
+
+        isDark = getThemeStatePref();
+        if(isDark) {
+            // dark theme is on
+            rootLayout.setBackgroundColor(getResources().getColor(R.color.black));
+            searchInput.setBackgroundResource(R.drawable.search_input_dark_style);
+        }
+        else
+        {
+            // light theme is on
+            searchInput.setBackgroundResource(R.drawable.search_input_style);
+            rootLayout.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+
+
+        fabSwitcher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isDark =!isDark;
+                if(isDark){
+                    rootLayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    searchInput.setBackgroundResource(R.drawable.search_input_dark_style);
+                }
+                else{
+                    rootLayout.setBackgroundColor(getResources().getColor(R.color.white));
+                    searchInput.setBackgroundResource(R.drawable.search_input_style);
+                }
+                myadapter = new PaCoverAdapter(getApplicationContext(),paCoverModelArrayList,isDark);
+                recyclerView.setAdapter(myadapter);
+                saveThemeStatePref(isDark);
+            }
+        });
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+
+                myadapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
+
+    }
+
+
+
+
+    //loading theme state
+
+    private void saveThemeStatePref(boolean isDark) {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPref",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isDark",isDark);
+        editor.commit();
+    }
+
+    private boolean getThemeStatePref () {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPref",MODE_PRIVATE);
+        boolean isDark = pref.getBoolean("isDark",false) ;
+        return isDark;
+
     }
 
     private void getPaCovers() {
@@ -157,6 +262,7 @@ public class BuyCoverActivity extends AppCompatActivity {
 
                  paCoverModelArrayList.add(paCoverModel);
 
+                SetUpRecyclerView(paCoverModelArrayList);
 
             } catch (JSONException e)
             {
@@ -164,14 +270,19 @@ public class BuyCoverActivity extends AppCompatActivity {
             }
 
         }
+
         return paCoverModelArrayList;
+
     }
 
 
 
     //set up recycler view
 
-    private  void SetUpRecyclerView(){
+    private  void SetUpRecyclerView(ArrayList<PaCoverModel> paCoverModelArrayList){
+        myadapter = new PaCoverAdapter(this, this.paCoverModelArrayList,isDark) ;
+        recyclerView.setAdapter(myadapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

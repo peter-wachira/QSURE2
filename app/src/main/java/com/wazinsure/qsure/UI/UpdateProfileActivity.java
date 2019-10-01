@@ -223,11 +223,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
         String sales_channel = sales_channelText.getText().toString();
 
 
-            addNewCustomerUpdateRequest( firstname,  last_name, gender, id_no,  dob, kra_pin, occupation, mobile_no,  email, course, institution, location, postal_address, postal_code, town, country, nok_fullname, nok_mobileno, nok_relation, agent_code, agent_usercode, sales_channel, resultUri);
+            addNewCustomerUpdateRequest( firstname,  last_name, gender,  dob, kra_pin, occupation, mobile_no,  email, course, institution, location, postal_address, postal_code, town, country, nok_fullname, nok_mobileno, nok_relation, agent_code, agent_usercode, sales_channel, resultUri);
 
     }
 
-    private void addNewCustomerUpdateRequest(String firstname, String last_name, String gender, String id_no, String dob, String kra_pin, String occupation, String mobile_no, String email, String course, String institution, String location, String postal_address, String postal_code, String town, String country, String nok_fullname, String nok_mobileno, String nok_relation, String agent_code, String agent_usercode, String sales_channel, Uri photo_url) {
+    private void addNewCustomerUpdateRequest(String firstname, String last_name, String gender, String dob, String kra_pin, String occupation, String mobile_no, String email, String course, String institution, String location, String postal_address, String postal_code, String town, String country, String nok_fullname, String nok_mobileno, String nok_relation, String agent_code, String agent_usercode, String sales_channel, Uri photo_url) {
 
 
         // Tag used to cancel the request
@@ -294,7 +294,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 params.put("first_name",firstname);
                 params.put("last_name",last_name );
                 params.put("gender",gender );
-                params.put("id_no",id_no);
+//                params.put("id_no",id_no);
                 params.put("dob",dob );
                 params.put("kra_pin",kra_pin );
                 params.put("occupation",occupation );

@@ -1,5 +1,8 @@
 package com.wazinsure.qsure.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class PaCoverModel {
     String pa_cover_id;
     String cover_name;
@@ -34,6 +37,12 @@ public class PaCoverModel {
         this.benefit3_amount = benefit3_amount;
         this.product = product;
     }
+
+
+    PaCoverModel(){
+
+    }
+
 
     public String getPa_cover_id() {
         return pa_cover_id;

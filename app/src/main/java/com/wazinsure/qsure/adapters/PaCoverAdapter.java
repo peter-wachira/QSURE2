@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,12 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.wazinsure.qsure.R;
-import com.wazinsure.qsure.UI.PaCoverDetailActivity;
+
+import com.wazinsure.qsure.UI.PaCoverDetailActiviy;
 import com.wazinsure.qsure.models.PaCoverModel;
+import android.widget.Filter;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewHolder> {
+public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewHolder>  implements Filterable {
     private ArrayList<PaCoverModel> mPaCovers = new ArrayList<>();
     ArrayList<PaCoverModel> mDataFiltrered;
 
@@ -50,7 +55,7 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
     @Override
     public PaCoverAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.pa_item, parent, false);
+        view = LayoutInflater.from(mContext).inflate(R.layout.pa_covre_item2, parent, false);
 
         return  new MyViewHolder(view);    }
 
@@ -58,8 +63,11 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
     public void onBindViewHolder(@NonNull PaCoverAdapter.MyViewHolder holder, int position) {
 
         holder.bindCustomer(mPaCovers.get(position));
-        holder.container.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
-
+        holder.container.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
+        holder.currency.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
+        holder.annual_premium.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
+        holder.product.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
+        holder.cover_name.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
     }
 
     @Override
@@ -68,6 +76,36 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
     }
 
 
+    @Override
+    public Filter getFilter() {
+        return new Filter(){
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String Key = constraint.toString();
+                if(Key.isEmpty()){
+                    mDataFiltrered = mPaCovers;
+                }else{
+                    ArrayList<PaCoverModel> lstFiltered = new ArrayList<>();
+                    for (PaCoverModel row: mPaCovers){
+                        if (row.getCover_name().toLowerCase().contains(Key.toLowerCase())){
+                            lstFiltered.add(row);
+                        }
+                    }
+                    mDataFiltrered = lstFiltered;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mDataFiltrered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults results) {
+                mDataFiltrered = (ArrayList<PaCoverModel>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
 
 
     public class  MyViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
@@ -89,6 +127,8 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
             product = itemView.findViewById(R.id.productItem);
             currency = itemView.findViewById(R.id.currencyItem);
             annual_premium = itemView.findViewById(R.id.annual_premiumItem);
+            container = itemView.findViewById(R.id.container);
+
 
 
             mContext = itemView.getContext();
@@ -110,11 +150,11 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
 
         @Override
         public void onClick(View view) {
-//            int itemPosition = getLayoutPosition();
-//            Intent intent = new Intent(mContext, PaCoverDetailActivity.class);
-//            intent.putExtra("position", itemPosition);
-//            intent.putExtra("paCoverModel", Parcels.wrap(paCoverModel));
-//            mContext.startActivity(intent);
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, PaCoverDetailActiviy.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("paCoverModel", Parcels.wrap(mPaCovers));
+            mContext.startActivity(intent);
         }
 
 
