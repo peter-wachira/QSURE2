@@ -15,13 +15,13 @@
         android:paddingRight="24dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="76dp"
-            android:layout_height="76dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/photo_url"
             app:civ_border_width="2dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@mipmap/user_icon"
+            android:src="@mipmap/add_profile_picture_icon"
             app:civ_border_color="@color/intro_description_color"/>
 
         <!--  IDno Label -->

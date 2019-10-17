@@ -109,12 +109,21 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+          >
             <EditText android:id="@+id/mobileNoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="Mobile number"/>
+
+            <CheckBox
+                android:id="@+id/confirmMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:hint="Confirm Mobile Number"
+                />
+
         </com.google.android.material.textfield.TextInputLayout>
 
 

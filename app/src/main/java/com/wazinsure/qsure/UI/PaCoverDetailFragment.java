@@ -2,6 +2,7 @@ package com.wazinsure.qsure.UI;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -24,6 +25,7 @@ import com.wazinsure.qsure.R;
 import com.wazinsure.qsure.models.PaCoverModel;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +43,7 @@ public class PaCoverDetailFragment extends Fragment implements View.OnClickListe
     TextView product;
     @BindView(R.id.btn_purchase)
     Button btn_Purchase;
+    @BindView(R.id.pa_cover_description) TextView pa_cover_description;
     Context mContext;
     PaCoverModel paCoverModel;
     private OnFragmentInteractionListener mListener;
@@ -86,6 +89,9 @@ public class PaCoverDetailFragment extends Fragment implements View.OnClickListe
         product.setText(paCoverModel.getProduct());
 
 
+        pa_cover_description.setText(paCoverModel.getCover_desc());
+
+
         return view;
 
 
@@ -100,13 +106,28 @@ public class PaCoverDetailFragment extends Fragment implements View.OnClickListe
                 @Override
                 public void run() {
 
-                Intent intent = new Intent(getContext(),PurchaseCoverActivity.class);
+                Intent intent = new Intent(getContext(),PurchaseCoverActivity2.class);
+                    saveProductDetails();
                     startActivity(intent);
                 }
             });
 
         }
 
+    }
+
+
+    private void saveProductDetails() {
+        SharedPreferences sharedPref = this.getActivity().getSharedPreferences(
+                "mypref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("product_name",paCoverModel.getProduct());
+        editor.putString("cover_id", paCoverModel.getPa_cover_id());
+        editor.putString("cover_name",paCoverModel.getCover_name());
+        editor.putString("cover_details",paCoverModel.getCover_desc());
+        editor.putString("product_premium",paCoverModel.getAnnual_premium());
+        editor.putString("pa_cover_description",paCoverModel.getCover_desc());
+        editor.commit();
     }
 
 

@@ -98,11 +98,11 @@ public class User_FirsttimeFragment extends Fragment  implements View.OnClickLis
 
         switch (view.getId()) {
 
-            case R.id.dailyCover :i = new Intent(getContext(),LoginActivity.class);
+            case R.id.dailyCover :i = new Intent(getContext(),DisplayDailyCoverActivity.class);
                 startActivity(i);break;
-            case R.id.monthlyCover :i= new Intent(getContext(), LoginActivity.class);
+            case R.id.monthlyCover :i= new Intent(getContext(), DisplayMonthlyCoverActivity.class);
                 startActivity(i);break;
-            case R.id.quarterlyCover: i= new Intent(getContext(),LoginActivity.class);
+            case R.id.quarterlyCover: i= new Intent(getContext(), DisplayAnnualCoverActivity.class);
                 startActivity(i);break;
             case R.id.faqs: i= new Intent(getContext(), FAQsActivity.class);
                 startActivity(i);break;

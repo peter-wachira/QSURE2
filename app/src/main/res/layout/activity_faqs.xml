@@ -1,9 +1,339 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.FAQsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/container1"
+        android:layout_height="wrap_content">
+
+
+        <!--Name of insurer-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:id="@+id/imageIQ"
+                    android:layout_height="140dp"
+                    android:src="@drawable/innovation_icon_green" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/linearitemscontainer"
+
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="How do I use WazInsure?"
+                        android:fontFamily="@font/boogaloo"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/nameofInsurerBuy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Request a call back to be set up on the WazInsure platform."
+                        android:nextFocusDown="@id/nameofProductBuy"
+                        android:textColor="#555"
+                        android:textSize="12dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <!--Name if product -->
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearitemscontainer2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="What is a Software as a Service (SaaS) Platform?"
+                        android:fontFamily="@font/boogaloo"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="12dp"
+                        android:id="@+id/nameofProductBuy"
+                        android:nextFocusDown="@+id/nameofCoverBuy"
+                        android:hint="SaaS is a cloud computing service in which software is centrally hosted and distributed and made available to customers over the internet."
+                        android:background="@color/transparent"
+
+                        android:textColor="#555"  />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Name of cover -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearitemscontainer3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/boogaloo"
+                        android:text="What products can run on WazInsure?"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="12dp"
+                        android:id="@+id/nameofCoverBuy"
+                        android:nextFocusDown="@+id/coverdetailsBuy"
+                        android:hint="WazInsure is product agnostic and developed to deliver across multiple business lines; You configure the desired products from the system."
+                        android:background="@color/transparent"
+                        android:textColor="#555" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--Cover Details-->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearitemscontainer4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/boogaloo"
+                        android:text="Will there be limits to data uploads to WazInsure?"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/coverdetailsBuy"
+                        android:nextFocusDown="@+id/premiumBuy"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="12dp"
+                        android:hint="No, storage is unlimited in WazInsure."
+                        android:background="@color/transparent"
+                        android:textColor="#555" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Premium in Kes-->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearitemscontainer5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/boogaloo"
+                        android:text="Does WazInsure exist in my country?"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="12dp"
+                        android:id="@+id/premiumBuy"
+                        android:nextFocusDown="@id/termsandCondtitionsBuy"
+                        android:hint="Yes, WazInsure is cloud-based and you can work from anywhere!"
+                        android:background="@color/transparent"
+                        android:textColor="#555" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+
+

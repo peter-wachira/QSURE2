@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingRight="1dp"
+    android:paddingRight="0dp"
     android:id="@+id/customer_layout"
     android:background="@color/cardview_light_background"
     android:layout_marginTop="8dp">
@@ -12,141 +12,195 @@
 
     <RelativeLayout
         android:id="@+id/container"
-        android:layout_width="387dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:background="@drawable/card_bg"
         android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="15dp"
+            android:id="@+id/innerContainer"
+            app:cardPreventCornerOverlap="true"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_marginStart="0dp"
+            android:layout_margin="24dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="Cover name: "
-                android:textColor="@color/colorAccent" />
-            <TextView
+                android:orientation="vertical">
 
-                android:id="@+id/coverNameItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="Annual Cover"
-                android:textColor="@color/content_text_color"
-                />
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:src="@drawable/energetic_people" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/content_text_color"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Cover name:"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/last_name"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/last_nameItem"
-                android:layout_toRightOf="@+id/last_nameItem"
-                android:text="Price: "
-                android:textColor="@color/colorAccent" />
+                            />
 
-            <TextView
-                android:id="@+id/annual_premiumItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/last_name"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/last_nameItem"
-                android:layout_toRightOf="@+id/last_nameItem"
-                android:text="5"
-                android:textColor="@color/content_text_color" />
+                        <TextView
+                            android:id="@+id/coverNameItem"
+                            android:layout_width="124dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Annual Cover"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="15dp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
 
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_below="@+id/destinationNameTextView"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="Product Name:"
+                            android:fontFamily="@font/montserrat"
 
+                            android:textColor="@color/content_text_color"
+                            />
 
-
-
-
-
-
-
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="45dp"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:text="Product: "
-                android:layout_marginTop="5dp"
-                android:textColor="@color/colorAccent"
-                android:layout_marginLeft="20dp" />
-            <TextView
-
-                android:id="@+id/productItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="jilinde"
-                android:textColor="@color/content_text_color"
-                />
+                        <TextView
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="15dp"
+                            android:textStyle="italic"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:text="Jilinde "
+                            android:id="@+id/productItem"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/montserrat"
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="Currency: "
-                android:textColor="@color/colorAccent" />
+                            />
 
-            <TextView
-                android:id="@+id/currencyItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                android:text="ksh"
-                android:textColor="@color/content_text_color" />
-        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/content_text_color"
+                            android:layout_below="@+id/destinationNameTextView"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Annual Premium: "
+
+                            />
+
+                        <TextView
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="15dp"
+                            android:textStyle="italic"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:id="@+id/currencyItem"
+                            android:layout_below="@+id/destinationNameTextView"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Ksh"
+
+                            />
+
+                        <TextView
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="5dp"
+                            android:textStyle="italic"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:id="@+id/annual_premiumItem"
+                            android:layout_below="@+id/destinationNameTextView"
+                            android:fontFamily="@font/montserrat"
+
+                            android:text="3"
+
+                            />
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Next Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                    <!--<androidx.appcompat.widget.AppCompatButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Previous Question"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

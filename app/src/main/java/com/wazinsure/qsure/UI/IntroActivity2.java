@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity2 extends AppCompatActivity {
 
     private ViewPager screenPager;
     IntroViewPagerAdapter introViewPagerAdapter ;
@@ -58,7 +58,7 @@ public class IntroActivity extends AppCompatActivity {
 
         if (restorePrefData()) {
 
-            Intent loginActivity = new Intent(getApplicationContext(),LoginActivityVolley.class );
+            Intent loginActivity = new Intent(getApplicationContext(),LoginActivity2.class );
             startActivity(loginActivity);
             finish();
 
@@ -180,11 +180,11 @@ public class IntroActivity extends AppCompatActivity {
 
 
     public void  viewAllInDb(){
-    //retrieve data from SQlite DB
+        //retrieve data from SQlite DB
         Cursor result = mDatabaseHelper.getAllData();
 
         if(result.getCount()==0){
-            Intent mainActivity = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent mainActivity = new Intent(getApplicationContext(), LoginActivity2.class);
             startActivity(mainActivity);
             // also we need to save a boolean value to storage so next time when the user run the app
             // we could know that he is already checked the intro screen activity
@@ -195,7 +195,7 @@ public class IntroActivity extends AppCompatActivity {
         }
         else if (result.getCount()!=0){
 
-            Intent mainActivity = new Intent(getApplicationContext(),LoginActivityVolley.class);
+            Intent mainActivity = new Intent(getApplicationContext(),LoginActivity2.class);
             startActivity(mainActivity);
             // also we need to save a boolean value to storage so next time when the user run the app
             // we could know that he is already checked the intro screen activity

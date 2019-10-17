@@ -33,7 +33,7 @@ public class PaCoverPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return paCoverModelArrayList.get(position).getCover_name();
+        return paCoverModelArrayList.get(position).getProduct();
     }
 
 }

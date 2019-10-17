@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -55,7 +57,7 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
     @Override
     public PaCoverAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.pa_covre_item2, parent, false);
+        view = LayoutInflater.from(mContext).inflate(R.layout.pa_item, parent, false);
 
         return  new MyViewHolder(view);    }
 
@@ -64,10 +66,11 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
 
         holder.bindCustomer(mPaCovers.get(position));
         holder.container.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_scale_animation));
-        holder.currency.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
-        holder.annual_premium.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
-        holder.product.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
-        holder.cover_name.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
+
+
+
+
+
     }
 
     @Override
@@ -112,11 +115,13 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
 
 
         TextView cover_name;
-        TextView cover_desc;
+        ImageView imageView;
+        TextView cover_description;
         TextView  product;
         TextView currency;
         TextView annual_premium;
         RelativeLayout container;
+        CardView innerContainer;
 
 
 
@@ -128,8 +133,9 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
             currency = itemView.findViewById(R.id.currencyItem);
             annual_premium = itemView.findViewById(R.id.annual_premiumItem);
             container = itemView.findViewById(R.id.container);
-
-
+            innerContainer = itemView.findViewById(R.id.innerContainer);
+            imageView = itemView.findViewById(R.id.image1);
+            cover_description = itemView.findViewById(R.id.pa_cover_description);
 
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
@@ -146,6 +152,8 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
 
         private void setDarkTheme (){
             container.setBackgroundResource(R.drawable.card_bg_dark);
+            innerContainer.setBackgroundResource(R.drawable.card_bg_dark);
+
         }
 
         @Override

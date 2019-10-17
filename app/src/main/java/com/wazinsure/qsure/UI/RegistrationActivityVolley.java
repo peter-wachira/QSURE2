@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -149,12 +151,43 @@ public class RegistrationActivityVolley extends AppCompatActivity {
             }
         });
 
+
+
+
+        _genderText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] listItems = {"Male", "Female"};
+
+                AlertDialog.Builder builderg = new AlertDialog.Builder(RegistrationActivityVolley.this);
+                builderg.setTitle("Choose gender");
+
+                int checkedItem = 0; //this will checked the item when user open the dialog
+                builderg.setSingleChoiceItems(listItems, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        _genderText.setText(listItems[which]);
+                    }
+                });
+
+                builderg.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builderg.create();
+                dialog.show();
+            }
+        });
+
     }
 
 
 
     //checking internet connection
-    private void shownetworkDialog() {
+    public void shownetworkDialog() {
         final  AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder = new AlertDialog.Builder(this, android.R.style.ThemeOverlay_Material_Dialog_Alert);
@@ -197,6 +230,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
                 SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+                _dobText.setError(null);
                 _dobText.setText(dateFormatter.format(newDate.getTime()));
             }
 
@@ -207,7 +241,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
 
     //registering a new user
 
-    private void registerNewUser() throws IOException, InterruptedException{
+    public void registerNewUser() throws IOException, InterruptedException{
         String firstname = _firstnameText.getText().toString();
         String surname = _surnameText.getText().toString();
         String gender = _genderText.getText().toString();
@@ -233,7 +267,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
 
 
     //volley request for registering customer
-    private void register( final String fullname,final String id_no,final String mobile_no, final String email, final Uri photo_url, final String username, final String password) {
+    public void register( final String fullname,final String id_no,final String mobile_no, final String email, final Uri photo_url, final String username, final String password) {
         // Tag used to cancel the request
         String cancel_req_tag = "register";
 
@@ -313,7 +347,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
 
 
     //adding part of the user's KYC
-    private void addNewCustomer() throws IOException, InterruptedException{
+    public void addNewCustomer() throws IOException, InterruptedException{
         String firstname = _firstnameText.getText().toString();
         String last_name = _surnameText.getText().toString();
         String gender = _genderText.getText().toString();
@@ -330,7 +364,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
     }
 
 
-    private void addNewCustomerRequest( final String first_name, final String last_name, final String id_no, final String dob, final String mobile_no, final String email,final String gender, final Uri photo_url) {
+    public void addNewCustomerRequest( final String first_name, final String last_name, final String id_no, final String dob, final String mobile_no, final String email,final String gender, final Uri photo_url) {
         // Tag used to cancel the request
 
         String cancel_req_tag = "customer";
@@ -356,6 +390,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
                     if (status.equals("success")) {
                         {
                             addDbData();
+                            saveUserDetails();
                             onRegistrationSuccess();
                         }
 
@@ -399,7 +434,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
                 params.put("dob",dob);
                 params.put("mobile_no",mobile_no);
                 params.put("email",email);
-                params.put("gender",email);
+                params.put("gender",gender);
                 params.put("photo_url", String.valueOf(photo_url));
 
                 return params;
@@ -413,7 +448,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
 
 
     //adding firstname lastname and ID to DB
-    private void addDbData() {
+    public void addDbData() {
         String firstname = _firstnameText.getText().toString();
         String last_name = _surnameText.getText().toString();
         String id_no = _idnoText.getText().toString();
@@ -426,9 +461,23 @@ public class RegistrationActivityVolley extends AppCompatActivity {
         }
     }
 
+    public void  saveUserDetails(){
+        SharedPreferences sharedPref =  this.getSharedPreferences(
+                "userRegistrationDetials", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("first_name",_firstnameText.getText().toString());
+        editor.putString("last_name",_surnameText.getText().toString() );
+        editor.putString("id_no",_idnoText.getText().toString());
+        editor.putString("mobile_no",_mobilenoText.getText().toString());
+        editor.putString("email", _emailText.getText().toString() );
+        editor.putString("dob",_dobText.getText().toString());
+        editor.commit();
+
+
+    }
 
     //validating user input
-
     public boolean validate() {
         boolean valid = true;
 
@@ -460,7 +509,6 @@ public class RegistrationActivityVolley extends AppCompatActivity {
     }
 
     //success and failure messages nb
-
     public void onRegistrationSuccess() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
 
@@ -487,13 +535,13 @@ public class RegistrationActivityVolley extends AppCompatActivity {
 
 
     //process Dialog
-    private void showDialog() {
+    public void showDialog() {
         if (!progressDialog.isShowing())
             progressDialog.setMessage("Registering you ...");
         progressDialog.show();
     }
 
-    private void hideDialog() {
+    public void hideDialog() {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
     }

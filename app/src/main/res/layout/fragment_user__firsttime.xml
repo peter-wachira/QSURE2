@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Buy Quarterly Cover"
+                        android:text="Buy Annual Cover"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wazinsure.qsure.R;
+import com.wazinsure.qsure.UI.quizpackage.StartingScreenActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,7 +82,9 @@ public class User_NotFirstTimeFragment extends Fragment implements View.OnClickL
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
 
+    private void loginInit() {
 
 
     }
@@ -120,7 +123,7 @@ public class User_NotFirstTimeFragment extends Fragment implements View.OnClickL
                 startActivity(i);break;
             case R.id.renewals: i= new Intent(getContext(), RenewalsActivity.class);
                 startActivity(i);break;
-            case R.id.quiz: i= new Intent(getContext(),QuizActivity.class);
+            case R.id.quiz: i= new Intent(getContext(), StartingScreenActivity.class);
                 startActivity(i);break;
             case R.id.faqs: i= new Intent(getContext(),FAQsActivity.class);
                 startActivity(i);break;

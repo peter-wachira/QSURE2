@@ -1,9 +1,500 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".UI.MyPoliiesActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Name of insurer-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="4dp"
+        android:outlineSpotShadowColor="@color/colorPrimaryDark"
+        android:layout_margin="16dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagePolicies"
+                android:layout_height="200dp"
+                android:src="@drawable/industry_finance"
+                android:layout_marginBottom="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="2"
+                    android:id="@+id/linearitemscontainer"
+                    android:orientation="horizontal"
+
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Cover Name:"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/nameofCoverPolicy"
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Annual Cover"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:id="@+id/linearitemscontainer2"
+                    android:layout_weight="2"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Product Name:"
+
+
+                        />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text=" Product Name"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:textStyle="italic"
+                        android:id="@+id/nameofProductPolicy"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="2"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/linearitemscontainer3"
+                    android:paddingLeft="10dp">
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Annual Premium: "
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/premiumPolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="5"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="2"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/linearitemscontainer4"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Applicant Name: "
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/applicantsnamePolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="Wachira"
+                        />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="5"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/linearitemscontainer5"
+                    >
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Applicant Phone:"
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/applicantPhonePolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="0711937973"
+                        />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="5"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/linearitemscontainer6"
+                    >
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Applicant Email:"
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/applicantEmailPolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="pwachira900@gmail.com"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="5"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/linearitemscontainer7"
+                    >
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Start Date:"
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/startDatePolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="12/01/2020"
+                        />
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="5"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/linearitemscontainer8"
+                    >
+
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="End Date: "
+
+                        />
+
+                    <!--<TextView-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_width="0px"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:id="@+id/currencyItem"-->
+                    <!--android:layout_below="@+id/destinationNameTextView"-->
+                    <!--android:text="Ksh"-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:layout_marginStart="3dp"
+                        android:textStyle="italic"
+                        android:id="@+id/endDatePolicy"
+                        android:layout_below="@+id/destinationNameTextView"
+                        android:text="12/02/2020"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/linearitemscontainer9"
+                    >
+
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:id="@+id/descLabel"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/content_text_color"-->
+                    <!--android:layout_below="@+id/annual_premiumItem"-->
+                    <!--android:fontFamily="@font/montserrat"-->
+                    <!--android:text="Cover Description: "-->
+
+                    <!--/>-->
+
+                    <TextView
+                        android:textSize="15dp"
+                        android:layout_width="0px"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:id="@+id/coverdetailsPolicy"
+                        android:layout_below="@+id/annual_premiumItem"
+                        android:fontFamily="@font/bigshot_one"
+                        android:text="Personal Accident Cover offers compensation for death, permanent disablement, temporary loss of income due to disablement and medical expenses arising from an accident."
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="2">
+                <!--<androidx.appcompat.widget.AppCompatButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Next Question"-->
+                <!--android:layout_weight="1"-->
+                <!--android:theme="@style/PrimaryFlatButton" />-->
+                <!--<androidx.appcompat.widget.AppCompatButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Previous Question"-->
+                <!--android:layout_weight="1"-->
+                <!--android:theme="@style/PrimaryFlatButton" />-->
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>

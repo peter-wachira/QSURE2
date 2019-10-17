@@ -11,15 +11,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/insurance_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/insurance_app_icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".UI.DisplayAnnualCoverActivity"></activity>
+        <activity android:name=".UI.DisplayMonthlyCoverActivity" />
+        <activity android:name=".UI.PurchaseCoverActivityFirstTimeUser" />
+        <activity android:name=".UI.LoginActivity2" />
+        <activity android:name=".UI.DisplayDailyCoverActivity" />
+        <activity android:name=".UI.quizpackage.QuizActivity" />
         <activity
-            android:name=".UI.PurchaseCoverActivity"
+            android:name=".UI.PurchaseCoverActivity2"
             android:label="@string/title_activity_purchase_cover"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UI.PaCoverDetailActiviy" />
         <activity
             android:name=".UI.LoginActivityVolley"
@@ -28,23 +35,21 @@
             android:name=".UI.RegistrationActivityVolley"
             android:theme="@style/AppTheme2" />
         <activity android:name=".UI.UpdateProfileActivity" />
-        <activity
-            android:name=".UI.RegistrationActivity"
-            android:theme="@style/AppTheme2" />
         <activity android:name=".UI.FAQsActivity" />
-        <activity android:name=".UI.QuizActivity" />
+        <activity android:name=".UI.quizpackage.StartingScreenActivity" />
         <activity android:name=".UI.RenewalsActivity" />
         <activity android:name=".UI.LodgeClaimActivity" />
         <activity android:name=".UI.MyPoliiesActivity" />
         <activity android:name=".UI.DisplayPaCoversActivity" />
         <activity
-            android:name=".UI.LoginActivity"
-            android:theme="@style/AppTheme2" />
-        <activity
             android:name=".UI.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UI.IntroActivity">
+        <activity
+            android:name=".UI.HomeActivity2"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UI.IntroActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

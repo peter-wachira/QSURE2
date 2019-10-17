@@ -113,7 +113,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private Uri resultUri;
     public static final int PICK_IMAGE = 1;
     private String TOKEN;
-
+    private String imageUrl;
 
 
     @Override
@@ -451,17 +451,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 gendertext.setText(json.getString("gender"));
                 courseText.setText(json.getString("course"));
                 institutionText.setText(json.getString("institution"));
-                String imageUrl = json.getString("photo_url");
-
-                if ( imageUrl.isEmpty() || imageUrl == null){
-
-                    Glide.with(getApplicationContext()).load(R.mipmap.user_icon).into(profileUrlText);
-
-                }
-                else {
-
-                    Glide.with(getApplicationContext()).load(imageUrl).into(profileUrlText);
-                }
+                imageUrl = json.getString("photo_url");
 
 
             } catch (JSONException e)
@@ -470,6 +460,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
 
         }
+
+//        if ( imageUrl == null){
+//
+//            Glide.with(getApplicationContext()).load(R.mipmap.add_profile_picture_icon).into(profileUrlText);
+//
+//        }else {
+//
+//            Glide.with(getApplicationContext()).load(imageUrl).into(profileUrlText);
+//        }
 
     }
     private void showDialog() {
