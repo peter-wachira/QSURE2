@@ -37,7 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
-public class MyPoliiesActivity extends AppCompatActivity {
+public class MyPoliciesActivity extends AppCompatActivity {
     private static final String TAG = "MyPoliciesActivity";
     @BindView(R.id.nameofCoverPolicy)
     TextView nameOfCoverPolicy;
@@ -104,7 +104,7 @@ public class MyPoliiesActivity extends AppCompatActivity {
 
 
 
-        if (!checkConnection.isConnectedToInternet(MyPoliiesActivity.this)) {
+        if (!checkConnection.isConnectedToInternet(MyPoliciesActivity.this)) {
             hideDialog();
             shownetworkDialog();
         }

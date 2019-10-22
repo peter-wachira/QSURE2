@@ -212,7 +212,7 @@ public class LoginActivityVolley extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent( this, HomeActivity.class);
+        Intent intent = new Intent( this, HomeActivity2.class);
         startActivity(intent);
         finish();
     }
@@ -252,7 +252,7 @@ public class LoginActivityVolley extends AppCompatActivity {
                     if (status.equals("success")) {
                         {
                             SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
-                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity2.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
                             onLoginSuccess();
                             saveUserID();

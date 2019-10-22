@@ -39,12 +39,8 @@
         <activity android:name=".UI.quizpackage.StartingScreenActivity" />
         <activity android:name=".UI.RenewalsActivity" />
         <activity android:name=".UI.LodgeClaimActivity" />
-        <activity android:name=".UI.MyPoliiesActivity" />
+        <activity android:name=".UI.MyPoliciesActivity" />
         <activity android:name=".UI.DisplayPaCoversActivity" />
-        <activity
-            android:name=".UI.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.HomeActivity2"
             android:label="@string/title_activity_home"

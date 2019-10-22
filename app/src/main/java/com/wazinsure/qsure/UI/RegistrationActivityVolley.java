@@ -165,8 +165,9 @@ public class RegistrationActivityVolley extends AppCompatActivity {
                 int checkedItem = 0; //this will checked the item when user open the dialog
                 builderg.setSingleChoiceItems(listItems, checkedItem, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        _genderText.setText(listItems[which]);
+                    public void onClick(DialogInterface dialog, int checkedId) {
+
+                        _genderText.setText( listItems[checkedId].toLowerCase());
                     }
                 });
 
@@ -174,6 +175,7 @@ public class RegistrationActivityVolley extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+
                     }
                 });
 

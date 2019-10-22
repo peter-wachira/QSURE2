@@ -121,20 +121,6 @@
 
                             />
 
-                        <!--<TextView-->
-                            <!--android:layout_weight="2"-->
-                            <!--android:layout_width="0px"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:fontFamily="@font/montserrat"-->
-                            <!--android:textColor="@color/colorPrimaryDark"-->
-                            <!--android:textSize="15dp"-->
-                            <!--android:textStyle="italic"-->
-                            <!--android:id="@+id/currencyItem"-->
-                            <!--android:layout_below="@+id/destinationNameTextView"-->
-                            <!--android:text="Ksh"-->
-
-                            <!--/>-->
-
                         <TextView
                             android:layout_weight="1"
                             android:layout_width="0px"
@@ -159,19 +145,6 @@
                         android:orientation="horizontal"
                         android:paddingLeft="10dp">
 
-
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:textSize="15dp"-->
-                            <!--android:id="@+id/descLabel"-->
-                            <!--android:textStyle="bold"-->
-                            <!--android:textColor="@color/content_text_color"-->
-                            <!--android:layout_below="@+id/annual_premiumItem"-->
-                            <!--android:fontFamily="@font/montserrat"-->
-                            <!--android:text="Cover Description: "-->
-
-                            <!--/>-->
 
                         <TextView
                             android:textSize="12dp"
@@ -289,18 +262,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Next Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Previous Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
+
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -382,18 +344,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Next Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Previous Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -562,18 +512,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Next Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Previous Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
+
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -943,26 +882,6 @@
 
 
 
-                            <!--&lt;!&ndash; Confirm Mobile Number Label &ndash;&gt;-->
-                            <!--<com.google.android.material.textfield.TextInputLayout-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-                                <!--android:layout_marginTop="5dp"-->
-                                <!--&gt;-->
-
-                                <!--<EditText-->
-                                    <!--android:id="@+id/confirmMobileNumber"-->
-                                    <!--android:layout_width="match_parent"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:inputType="number"-->
-                                    <!--android:hint="Confirm Mobile Number"-->
-                                    <!--/>-->
-
-                            <!--</com.google.android.material.textfield.TextInputLayout>-->
-
-
-
                             <!-- ID No -->
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -994,6 +913,8 @@
                                     android:inputType="text"
                                     android:hint="Start Date"/>
                             </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
 
@@ -1087,18 +1008,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Next Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
-                    <!--<androidx.appcompat.widget.AppCompatButton-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Previous Question"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:theme="@style/PrimaryFlatButton" />-->
+
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1166,12 +1076,6 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
-
-
-
-
 
 
         <androidx.appcompat.widget.AppCompatButton

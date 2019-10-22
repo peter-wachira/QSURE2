@@ -127,6 +127,7 @@ public class PaCoverDetailFragment extends Fragment implements View.OnClickListe
         editor.putString("cover_details",paCoverModel.getCover_desc());
         editor.putString("product_premium",paCoverModel.getAnnual_premium());
         editor.putString("pa_cover_description",paCoverModel.getCover_desc());
+        editor.putString("currency",paCoverModel.getCurrency());
         editor.commit();
     }
 

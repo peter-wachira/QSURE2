@@ -25,9 +25,10 @@
             android:textSize="16dip"
             app:fontFamily="@font/open_sans_regular" />
 
-        <ImageView android:src="@mipmap/claims"
+        <ImageView
+            android:src="@drawable/industry_finance"
             android:layout_width="wrap_content"
-            android:layout_height="72dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 

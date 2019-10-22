@@ -28,6 +28,7 @@ import androidx.cardview.widget.CardView;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -68,6 +69,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -92,6 +94,8 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     private static final String URL_FOR_CUSTOMER = "https://demo.wazinsure.com:4443/api/customers";
     private static final String URL_FOR_PA_POLICY = "https://demo.wazinsure.com:4443/api/papolicies";
     private static final String URL_FOR_REGISTRATION = "https://demo.wazinsure.com:4443/auth/register";
+    private static final String URL_FOR_PA_PAYMENT = "https://demo.wazinsure.com:4443/api/payments";
+    private static final String MPESA_URL_TO = "https://demo.wazinsure.com:4443/api/mpesaresponsesdto/";
 
     private String TOKEN;
     @BindView(R.id.firstnameReg)
@@ -151,21 +155,22 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     Dialog dialog;
     //bind purchase Cover
     private static final String TAG = "PurchaseCoverActivity";
-    private static final String MPESA_URL_TO = "https://demo.wazinsure.com:4443/api/mpesaresponsesdto/";
     SharedPreferences sharedpreferences;
     String product_name;
     String cover_name;
+    String currency;
     String cover_details;
     String product_premium;
     String cover_id;
-    String declarationGoodHealth ="";
-    String declarationNotinGoodHealth ="";
-    String previous_underwritter ="";
-    String previous_Pacover ="";
-    String physical_defect ="";
-    String no_physical_defect ="";
-    String previous_accidents  ="";
-    String no_previous_accidents  ="";
+    String payment_date;
+    String declarationGoodHealth;
+    String declarationNotinGoodHealth;
+    String previous_underwritter;
+    String previous_Pacover;
+    String physical_defect;
+    String no_physical_defect;
+    String previous_accidents;
+    String no_previous_accidents;
     private String applicant_name;
     private String applicant_phone_number;
 
@@ -293,7 +298,6 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         });
 
         //RadioGroup Listeners
-
         previousCoverRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -301,9 +305,9 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 if (_previousCoverYes.isChecked()) {
                     previousCoverDescriptionBuy.setVisibility(View.VISIBLE);
                     previous_Pacover = "Yes";
-                    previous_underwritter = previousCoverDescriptionBuy.getText().toString();
                 }
                 else if (_previousCoverNo.isChecked()) {
+                    previous_Pacover ="No";
                     previousCoverDescriptionBuy.setVisibility(View.GONE);
                 }
             }
@@ -320,8 +324,8 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 else if (_goodhealthNo.isChecked()) {
                     badHealthDescriptionBuy.setVisibility(View.VISIBLE);
                     declarationGoodHealth = "No";
-                    declarationNotinGoodHealth = badHealthDescriptionBuy.getText().toString();
                 }
+
             }
         });
 
@@ -331,12 +335,13 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 // checkedId is the RadioButton selected
                 if (_accidentPreviousYes.isChecked()) {
                     previousaccidentBuy.setVisibility(View.VISIBLE);
-                    previous_accidents = previousCoverDescriptionBuy.getText().toString();
+                    no_previous_accidents ="No";
 
                 } else if (_accidentPreviousNo.isChecked()) {
                     previousaccidentBuy.setVisibility(View.GONE);
                     no_previous_accidents ="Yes";
                 }
+
             }
         });
 
@@ -346,7 +351,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 // checkedId is the RadioButton selected
                 if (_physicaldefectYes.isChecked()) {
                     infirmityBuy.setVisibility(View.VISIBLE);
-                    physical_defect = infirmityBuy.getText().toString();
+                    no_physical_defect = "No";
 
                 } else if (_physicaldefectNo.isChecked()) {
                     infirmityBuy.setVisibility(View.GONE);
@@ -354,7 +359,6 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 }
             }
         });
-
     }
 
 
@@ -743,9 +747,8 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
                             @Override
                             public void run() {
-                                progressDialog.setMessage("Generating Policy...");
-                                progressDialog.show();
-                                generatePaPolicy();
+
+                                addPayment();
                             }
                         }, 2000);
 
@@ -765,28 +768,122 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
     }
 
+    private void addPayment() {
+        String policy_no = merchantID.substring(0,6);
+        String receipt_no = merchantID.substring(0,7);
+        String amount = amount_received;
+        String cover_name = coverNameBuy.getText().toString();
+        String fullname = _firstnameText.getText().toString() + " " + _surnameText.getText().toString();
+        String payment_type = "Mpesa";
+        String payment_channel ="Mobile App";
+        Date date = new Date();
+        SimpleDateFormat formatter = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            payment_date  = formatter.format(date).trim();
+        }
+        String mobile_number = mobile_noBuy.getText().toString();
+        String transaction_details = cover_details;
+
+        addPAPayment(receipt_no,currency,amount,cover_name,product_premium,fullname,payment_type,payment_channel,payment_date,mobile_number,transaction_details,policy_no);
+    }
+
+    private void addPAPayment(String receipt_no, String currency, String amount, String cover_name, String monthly_premium, String fullname, String payment_type, String payment_channel, String payment_date, String mobile_number, String transaction_details, String policy_no) {
+
+
+        String cancel_req_tag = "pa_payment";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                URL_FOR_PA_PAYMENT, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "PA Payment Response: " + response.toString());
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    String status = jObj.getString("status");
+
+                    if (status.equals("success")) {
+
+                        {
+                            Toasty.success(getApplicationContext(), "Payment For "+ transaction_details  +" Successful", Toast.LENGTH_LONG).show();
+                            generatePaPolicy();
+                        }
+
+                    } else {
+                        Toasty.warning(getApplicationContext(), "Payment For "+ transaction_details  +" Failed", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "PA payment Error: " + error.getMessage());
+                Toasty.warning(getApplicationContext(), "PA Payment Error. Please, contact the ICT " + error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        }) {
+
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<>();
+                params.put("receipt_no", receipt_no);
+                params.put("currency", currency);
+                params.put("amount", amount);
+                params.put("cover_name", cover_name);
+                params.put("monthly_premium", monthly_premium);
+                params.put("fullname", fullname);
+                params.put("payment_type", payment_type);
+                params.put("payment_channel", payment_channel);
+                params.put("payment_date", payment_date);
+                params.put("mobile_number", mobile_number);
+                params.put("transaction_details", transaction_details);
+                params.put("policy_no", policy_no);
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + TOKEN);//put your token here
+                return headers;
+
+            }
+        };
+        // Adding request to request queue
+        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq, cancel_req_tag);
+
+
+
+    }
+
     private void generatePaPolicy() {
+        progressDialog.setMessage("Generating Policy...");
+        progressDialog.show();
 
         String policy_no = merchantID.substring(0,6);
         String applicant_dob = _dobText.getText().toString();
         applicant_name = _firstnameText.getText().toString() + " " + _surnameText.getText().toString();
 
         String applicant_idno = _idnoText.getText().toString();
-        applicant_phone_number = mobile_noBuy.getText().toString();
         String applicant_email = _emailText.getText().toString();
         start_date = _startDateText.getText().toString();
         end_date = _endDateText.getText().toString();
 
-        String declaration_goodhealth = declarationGoodHealth;
-        String notin_goodhealth = declarationNotinGoodHealth;
-        String previous_pacovers = previous_Pacover;
-        String previous_paunderwritter = previous_underwritter;
 
-
-
-
-
-        paVolleyRequest(policy_no,cover_name, product_name, product_premium, applicant_dob, applicant_name, applicant_idno, applicant_phone_number, applicant_email, start_date, end_date, declaration_goodhealth, notin_goodhealth, previous_pacovers, previous_paunderwritter,physical_defect,no_physical_defect,previous_accidents,no_previous_accidents);
+        paVolleyRequest(policy_no,cover_name, product_name, product_premium, applicant_dob, applicant_name, applicant_idno, mobile_noBuy.getText().toString(), applicant_email, start_date, end_date, declarationGoodHealth, badHealthDescriptionBuy.getText().toString(), previous_Pacover,previousCoverDescriptionBuy.getText().toString(),infirmityBuy.getText().toString(),no_physical_defect,previousaccidentBuy.getText().toString(),no_previous_accidents);
 
     }
 
@@ -814,12 +911,18 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                             addRegistrationDetails("","",_idnoText.getText().toString());
 
                             logout();
+
+                            if (dialog.isShowing()){
+                                dialog.dismiss();
+                            }
+
                         }
 
                     } else {
 
-
-
+                        if (dialog.isShowing()){
+                            dialog.dismiss();
+                        }
 
                     }
                 } catch (JSONException e) {
@@ -833,7 +936,11 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toasty.warning(getApplicationContext(), "PA policy error. Please, contact the ICT " + error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
+
+                if (dialog.isShowing()){
+                    dialog.dismiss();
+                }
+
             }
         }) {
 
@@ -849,9 +956,9 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 params.put("applicant_dob", applicant_dob);
                 params.put("applicant_name", applicant_name);
                 params.put("applicant_idno", applicant_idno);
+                params.put("applicant_phone_number", applicant_phone_number);
                 params.put("applicant_email", applicant_email);
                 params.put("start_date", start_date);
-                params.put("applicant_phone_number", applicant_phone_number);
                 params.put("end_date", end_date);
                 params.put("declaration_goodhealth", declaration_goodhealth);
                 params.put("notin_goodhealth", notin_goodhealth);
@@ -944,7 +1051,6 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 security_pin = pin_input.getText().toString();
                 user_gender = gender;
                 _idnoText.setText(id_input.getText().toString());
-
 
 
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -1041,7 +1147,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                     if (status.equals("success")) {
                         {
                             SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
-                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity2.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
 
                             saveUserID();
@@ -1289,6 +1395,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         editor.putString("mobile_no",mobile_noBuy.getText().toString());
         editor.putString("email", _emailText.getText().toString() );
         editor.putString("dob",_dobText.getText().toString());
+
         editor.commit();
 
 
@@ -1356,62 +1463,63 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
         merchantID = String.valueOf(x);
 
+        Log.d("MechantID Here",merchantID);
     }
 
     //input validation
     public boolean validate() {
-        boolean valid = true;
+        final boolean[] valid = {true};
 
         String id_no = _idnoText.getText().toString();
         String dob = _dobText.getText().toString();
 
-
-//        if ( !_goodhealthYes.isChecked() || !_goodhealthNo.isChecked()) {
-//            badHealthDescriptionBuy.setVisibility(View.VISIBLE);
-//            badHealthDescriptionBuy.setError("Please confirm your health status");
-//            valid = false;
-//        }
-//
-//         else if ( !_accidentPreviousYes.isChecked() || !_accidentPreviousYes.isChecked()) {
+//        if ( !_accidentPreviousYes.isChecked()&& !_accidentPreviousNo.isChecked()) {
 //            previousCoverDescriptionBuy.setVisibility(View.VISIBLE);
-//            previousCoverDescriptionBuy.setError("Please confirm previous accidents");
-//
-//            valid = false;
+//            previousCoverDescriptionBuy.setError("Have you confirmed previous covers?");
+//            valid[0] = false;
 //        }
-//        else if ( !_physicaldefectYes.isChecked() || !_physicaldefectYes.isChecked()) {
+//        else if (!_goodhealthYes.isChecked() && !_goodhealthNo.isChecked()) {
+//            badHealthDescriptionBuy.setVisibility(View.VISIBLE);
+//            badHealthDescriptionBuy.setError("Have you confirmed your health status?");
+//            valid[0] = false;
+//        }
+//        else if (!_physicaldefectYes.isChecked() && !_physicaldefectNo.isChecked()) {
 //            infirmityBuy.setVisibility(View.VISIBLE);
-//            infirmityBuy.setError("Please confirm your health status");
-//            valid = false;
+//            infirmityBuy.setError("Have you confirmed any physical infirmity ?");
+//            valid[0] = false;
 //        }
-
-
+//        else if (!_previousCoverYes.isChecked() && !_previousCoverNo.isChecked()) {
+//            previousCoverDescriptionBuy.setVisibility(View.VISIBLE);
+//            infirmityBuy.setError("Have you confirmed any physical infirmity ?");
+//            valid[0] = false;
+//        }
          if (id_no.isEmpty()) {
             _idnoText.setError("Id number can not be empty");
-            valid = false;
+            valid[0] = false;
         } else if (dob.isEmpty() || dob.equals("")) {
             _dobText.setError("Date of Birth can not be empty");
-            valid = false;
+            valid[0] = false;
 
         } else if (mobile_noBuy.getText().toString().isEmpty()) {
             mobile_noBuy.setError("Mobile Number can not be empty");
-            valid = false;
+            valid[0] = false;
         }
 
         else if (_startDateText.getText().toString().isEmpty()) {
             _startDateText.setError("Have you added a start Date for the Cover?");
-            valid = false;
+            valid[0] = false;
         } else if (_endDateText.getText().toString().isEmpty()) {
             _endDateText.setError("Have you added an End Date for the Cover?");
-            valid = false;
+            valid[0] = false;
         } else if (!declarationBuyCheckbox.isChecked()) {
             declarationBuyCheckbox.setError("Please Confirm Declaration to Proceed");
             Toasty.warning(getBaseContext(), "Please Confirm Declaration to Proceed", Toast.LENGTH_LONG, true).show();
-            valid = false;
+            valid[0] = false;
         } else if (!termsandConditionsBuy.isChecked()) {
             termsandConditionsBuy.setError("Please Accept Terms and Conditions to Proceed");
             Toasty.warning(getBaseContext(), "Please Accept Terms and Conditions to Proceed", Toast.LENGTH_LONG, true).show();
 
-            valid = false;
+            valid[0] = false;
         } else {
             badHealthDescriptionBuy.setError(null);
              previousCoverDescriptionBuy.setError(null);
@@ -1425,7 +1533,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
         }
 
-        return valid;
+        return valid[0];
     }
 
     // Retrieving pa cover Details
@@ -1441,6 +1549,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
             product_premium = sharedPref.getString("product_premium_display", product_premium);
             cover_details = sharedPref.getString("cover_details_display", cover_details);
             cover_name = sharedPref.getString("cover_name_display", cover_name);
+            currency = "ksh";
             String token = sharedPref.getString("k", TOKEN);
             TOKEN = token;
 
@@ -1488,6 +1597,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     @Override
     public void onClick(View view) {
         if (view == btnBuyCover) {
+
             try {
                 initPurchase();
 
@@ -1496,7 +1606,6 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
 
         }
     }

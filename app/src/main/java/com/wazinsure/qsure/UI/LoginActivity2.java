@@ -59,27 +59,6 @@ public class LoginActivity2 extends AppCompatActivity {
         checkWhetherthereareRegisteredUsersinDB();
 
 
-
-        // Check if UserResponse is Already Logged In
-//        if(SaveSharedPreference.getLoggedStatus(getApplicationContext())) {
-//            Intent intent = new Intent(getApplicationContext(), HomeActivity2.class);
-//            Toasty.info(getBaseContext(), " Welcome back !", Toast.LENGTH_SHORT, true).show();
-//            startActivity(intent);
-//        } else {
-//
-//            if (!checkConnection.isConnectedToInternet(getApplicationContext())) {
-//                shownetworkDialog();
-//            }else{
-//                userSignin();
-//            }
-//        }
-
-
-
-
-
-
-
     }
 
 

@@ -117,7 +117,7 @@ public class User_NotFirstTimeFragment extends Fragment implements View.OnClickL
 
             case R.id.buy_cover :i = new Intent(getContext(), DisplayPaCoversActivity.class);
                 startActivity(i);break;
-            case R.id.my_policies :i= new Intent(getContext(), MyPoliiesActivity.class);
+            case R.id.my_policies :i= new Intent(getContext(), MyPoliciesActivity.class);
                 startActivity(i);break;
             case R.id.lodge_claim: i= new Intent(getContext(),LodgeClaimActivity.class);
                 startActivity(i);break;
