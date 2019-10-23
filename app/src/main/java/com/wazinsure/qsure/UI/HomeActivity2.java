@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.wazinsure.qsure.R;
 import com.wazinsure.qsure.helpers.DatabaseHelper;
@@ -30,6 +31,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -37,18 +40,27 @@ import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
 public class HomeActivity2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, User_FirsttimeFragment.OnFragmentInteractionListener,User_NotFirstTimeFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, User_FirsttimeFragment.OnFragmentInteractionListener,User_NotFirstTimeFragment.OnFragmentInteractionListener{
 
 
     FragmentManager fragmentManager;
     DatabaseHelper mDatabaseHelper;
     private SharedPreferences sharedpreferences;
 
+    private LinearLayout bottomsheetlayout;
+    private BottomSheetBehavior bottomSheetBehavior;
+    private ImageView imgshare;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         ButterKnife.bind(this);
+
+
+
         mDatabaseHelper = new DatabaseHelper(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -62,9 +74,19 @@ public class HomeActivity2 extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+
+
         initContentHomeFragments();
 
+        bottomsheetlayout = (LinearLayout) findViewById(R.id.bottmsheet);
+        bottomSheetBehavior = bottomSheetBehavior.from(bottomsheetlayout);
     }
+
+
+
+
+
+
 
     public void  initContentHomeFragments(){
         Cursor result = mDatabaseHelper.getAllData();
@@ -101,6 +123,8 @@ public class HomeActivity2 extends AppCompatActivity
                     fragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainer, new User_NotFirstTimeFragment())
                             .commit();
+
+
                 }
             });
         }
@@ -175,9 +199,8 @@ public class HomeActivity2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-
-
+        if (id == R.id.nav_share) {
+            showShareBottomSheet();
         }
 
         else if (id == R.id.nav_profile) {
@@ -243,6 +266,15 @@ public class HomeActivity2 extends AppCompatActivity
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+
+
+
+    private void showShareBottomSheet() {
+
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
     }
 }

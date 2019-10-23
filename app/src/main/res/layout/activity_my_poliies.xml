@@ -35,6 +35,41 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="2"
+                    android:id="@+id/policyNumberContainer"
+                    android:orientation="horizontal"
+
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/content_text_color"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Policy Number:"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/policynumberPolicy"
+                        android:layout_weight="1"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Daily Cover/2019/101"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
@@ -62,7 +97,7 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
-                        android:text="Annual Cover"
+                        android:text="Cover Name"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="15dp"
                         android:textStyle="italic" />
@@ -152,7 +187,7 @@
                         android:textStyle="italic"
                         android:id="@+id/premiumPolicy"
                         android:layout_below="@+id/destinationNameTextView"
-                        android:text="5"
+                        android:text="Amount"
                         />
 
                 </LinearLayout>
@@ -207,7 +242,7 @@
                         android:textStyle="italic"
                         android:id="@+id/applicantsnamePolicy"
                         android:layout_below="@+id/destinationNameTextView"
-                        android:text="Wachira"
+                        android:text="Names"
                         />
                 </LinearLayout>
 
@@ -261,7 +296,7 @@
                         android:textStyle="italic"
                         android:id="@+id/applicantPhonePolicy"
                         android:layout_below="@+id/destinationNameTextView"
-                        android:text="0711937973"
+                        android:text="07********"
                         />
 
                 </LinearLayout>
@@ -316,7 +351,7 @@
                         android:textStyle="italic"
                         android:id="@+id/applicantEmailPolicy"
                         android:layout_below="@+id/destinationNameTextView"
-                        android:text="pwachira900@gmail.com"
+                        android:text="email@gmail.com"
                         />
 
                 </LinearLayout>

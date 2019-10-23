@@ -74,10 +74,15 @@ public class MyPoliciesActivity extends AppCompatActivity {
     LinearLayout linearitemscontainer8;
     @BindView(R.id.linearitemscontainer9)
     LinearLayout linearitemscontainer9;
+    @BindView(R.id.policyNumberContainer)
+    LinearLayout policyNumberContainer;
+
+
 
     @BindView(R.id.imagePolicies)
     ImageView imagePolicies;
-
+    @BindView(R.id.policynumberPolicy)
+    TextView policynumberPolicy;
     DatabaseHelper mDatabaseHelper;
     private RequestQueue requestQueue;
     ProgressDialog progressDialog;
@@ -194,6 +199,8 @@ public class MyPoliciesActivity extends AppCompatActivity {
                     applicantEmailPolicy.setText(json.getString("applicant_email"));
                     startDatePolicy.setText(json.getString("start_date"));
                     endDatePolicy.setText(json.getString("end_date"));
+                    policynumberPolicy.setText(json.getString("policy_no"));
+
 
 
                 } catch (JSONException e) {
@@ -230,6 +237,7 @@ public class MyPoliciesActivity extends AppCompatActivity {
 
         private void createAnimations() {
         imagePolicies.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation));
+        policyNumberContainer.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_scale_animation));
         linearitemscontainer.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_scale_animation));
         linearitemscontainer2.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_scale_animation));
         linearitemscontainer2.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_scale_animation));

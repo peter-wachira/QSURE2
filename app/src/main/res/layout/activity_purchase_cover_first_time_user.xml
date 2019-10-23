@@ -839,7 +839,7 @@
                                 android:layout_marginTop="5dp"
 
                                 android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/dobReg"
+                                <EditText android:id="@+id/dobRegistration"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Date of Birth"/>
@@ -853,7 +853,7 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/email"
+                                <EditText android:id="@+id/emailBuy"
                                     android:focusable="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -869,11 +869,13 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_marginTop="5dp"
                                 >
-                                <EditText android:id="@+id/mobile_noBuy"
+
+                                <EditText
+                                    android:id="@+id/mobile_noBuy"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:inputType="number"
-                                    android:hint="Mobile Number"/>
+                                    android:hint="Mobile Number"
+                                    android:inputType="number" />
 
 
 
@@ -981,7 +983,7 @@
                         android:textColorHint="#555"
                         android:textSize="18sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"

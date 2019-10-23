@@ -430,6 +430,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             try {
                 //Getting json object
                 JSONObject json = j.getJSONObject(i);
+                id_noText.setText(json.getString("id_no"));
                 firstNameText.setText(json.getString("first_name"));
                 lastNameText.setText(json.getString("last_name"));
                 dobText.setText(json.getString("dob"));

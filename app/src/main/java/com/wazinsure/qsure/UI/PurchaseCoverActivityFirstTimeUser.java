@@ -104,7 +104,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     EditText _surnameText;
     @BindView(R.id.id_no)
     EditText _idnoText;
-    @BindView(R.id.dobReg)
+    @BindView(R.id.dobRegistration)
     EditText _dobText;
     @BindView(R.id.startDateBuy)
     EditText _startDateText;
@@ -140,7 +140,8 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
     @BindView(R.id.profile_url)
     ImageView _profileurlText;
-    @BindView(R.id.email)
+
+    @BindView(R.id.emailBuy)
     EditText _emailText;
 
     Uri resultUri;
@@ -173,6 +174,8 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     String no_previous_accidents;
     private String applicant_name;
     private String applicant_phone_number;
+
+    String dob;
 
 
     //mpesa Response Params
@@ -238,6 +241,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     private String end_date;
     private String security_pin;
     private String user_gender;
+    private String mobile_number;
 
 
     @Override
@@ -253,7 +257,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         dialog = new  Dialog(this);
 
         retrievePaCOverDetails();
-        generateMerchantID();
+
         addBenefactorCheckbox.setChecked(false);
         //add benefactor onclick listener
         btnBuyCover.setOnClickListener(this);
@@ -374,8 +378,9 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
-                _dobText.setText(dateFormatter.format(newDate.getTime()));
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.US);_dobText.setText(dateFormatter.format(newDate.getTime()));
+
+                dob = _dobText.getText().toString();
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -648,7 +653,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 progressDialog.show();
                 mpesaGetRequest();
             }
-        }, 15000);
+        }, 16000);
 
     }
 
@@ -748,9 +753,11 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                             @Override
                             public void run() {
 
-                                addPayment();
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                    addPayment();
+                                }
                             }
-                        }, 2000);
+                        }, 1500);
 
 
                     } else if (!processor_id.equals(merchantID)) {
@@ -768,6 +775,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addPayment() {
         String policy_no = merchantID.substring(0,6);
         String receipt_no = merchantID.substring(0,7);
@@ -776,15 +784,16 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         String fullname = _firstnameText.getText().toString() + " " + _surnameText.getText().toString();
         String payment_type = "Mpesa";
         String payment_channel ="Mobile App";
+
         Date date = new Date();
-        SimpleDateFormat formatter = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat dateFormatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            payment_date  = formatter.format(date).trim();
-        }
-        String mobile_number = mobile_noBuy.getText().toString();
+        payment_date = dateFormatter.format(date);
+
+
+        mobile_number = mobile_noBuy.getText().toString();
         String transaction_details = cover_details;
 
         addPAPayment(receipt_no,currency,amount,cover_name,product_premium,fullname,payment_type,payment_channel,payment_date,mobile_number,transaction_details,policy_no);
@@ -874,16 +883,13 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         progressDialog.show();
 
         String policy_no = merchantID.substring(0,6);
-        String applicant_dob = _dobText.getText().toString();
         applicant_name = _firstnameText.getText().toString() + " " + _surnameText.getText().toString();
 
-        String applicant_idno = _idnoText.getText().toString();
-        String applicant_email = _emailText.getText().toString();
         start_date = _startDateText.getText().toString();
         end_date = _endDateText.getText().toString();
 
 
-        paVolleyRequest(policy_no,cover_name, product_name, product_premium, applicant_dob, applicant_name, applicant_idno, mobile_noBuy.getText().toString(), applicant_email, start_date, end_date, declarationGoodHealth, badHealthDescriptionBuy.getText().toString(), previous_Pacover,previousCoverDescriptionBuy.getText().toString(),infirmityBuy.getText().toString(),no_physical_defect,previousaccidentBuy.getText().toString(),no_previous_accidents);
+        paVolleyRequest(policy_no,cover_name, product_name, product_premium, dob, applicant_name, _idnoText.getText().toString(), mobile_number, _emailText.getText().toString(), start_date, end_date, declarationGoodHealth, badHealthDescriptionBuy.getText().toString(), previous_Pacover,previousCoverDescriptionBuy.getText().toString(),infirmityBuy.getText().toString(),no_physical_defect,previousaccidentBuy.getText().toString(),no_previous_accidents);
 
     }
 
@@ -912,17 +918,12 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
 
                             logout();
 
-                            if (dialog.isShowing()){
-                                dialog.dismiss();
-                            }
+
 
                         }
 
                     } else {
 
-                        if (dialog.isShowing()){
-                            dialog.dismiss();
-                        }
 
                     }
                 } catch (JSONException e) {
@@ -1051,6 +1052,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
                 security_pin = pin_input.getText().toString();
                 user_gender = gender;
                 _idnoText.setText(id_input.getText().toString());
+
 
 
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -1395,7 +1397,7 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
         editor.putString("mobile_no",mobile_noBuy.getText().toString());
         editor.putString("email", _emailText.getText().toString() );
         editor.putString("dob",_dobText.getText().toString());
-
+        editor.putString("k",TOKEN);
         editor.commit();
 
 
@@ -1597,15 +1599,15 @@ public class PurchaseCoverActivityFirstTimeUser extends AppCompatActivity implem
     @Override
     public void onClick(View view) {
         if (view == btnBuyCover) {
-
+            generateMerchantID();
             try {
                 initPurchase();
-
             } catch (java.io.IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
 
         }
     }

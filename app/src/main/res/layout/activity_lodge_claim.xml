@@ -24,6 +24,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="18dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/boogaloo"
+                        android:layout_weight="1"
+                        android:text="Lodge Claim"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="32sp" />
+
+                </LinearLayout>
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
@@ -31,174 +52,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="2"
-                        android:orientation="horizontal"
-                        android:paddingLeft="10dp">
-                        <TextView
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/content_text_color"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Cover Name:"
-
-                            />
-
-                        <TextView
-                            android:id="@+id/nameofCoverBuy"
-                            android:layout_weight="1"
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Annual Cover"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_weight="2"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="10dp">
-
-                        <TextView
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/content_text_color"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Product Name:"
-
-                            />
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text=" Product Name"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp"
-                            android:textStyle="italic"
-                            android:id="@+id/nameofProductBuy"
-
-                            />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_weight="2"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="10dp">
-
-
-                        <TextView
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/content_text_color"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Annual Premium: "
-
-                            />
-
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp"
-                            android:layout_marginStart="3dp"
-                            android:textStyle="italic"
-                            android:id="@+id/premiumBuy"
-                            android:layout_below="@+id/destinationNameTextView"
-                            android:text="5"
-                            />
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:paddingLeft="10dp">
-
-
-
-
-                        <TextView
-                            android:textSize="12dp"
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:id="@+id/coverdetailsBuy"
-                            android:layout_below="@+id/annual_premiumItem"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Cover Description"
-
-                            />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-        <!--Previous Covers Capture-->
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp"
-            android:elevation="4dp"
-            android:outlineSpotShadowColor="@color/colorPrimaryDark"
-            android:layout_margin="16dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -209,61 +62,34 @@
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/boogaloo"
                         android:layout_weight="1"
-                        android:text="Have you had any previous PA Cover?"
+                        android:text="Policy Number"
                         android:textColor="@color/gradient_start_color"
                         android:textSize="18sp" />
-
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/previousCoverRadioGroup"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/previousCoverYes"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"/>
-                        <RadioButton
-                            android:id="@+id/previousCoverNo"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="No"/>
-                    </RadioGroup>
-
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
                         android:textSize="15sp"
-                        android:visibility="invisible"
                         android:paddingLeft="10dp"
                         android:layout_weight="1"
-                        android:hint="Who was the underwritter"
-                        android:id="@+id/previousCoverDescription"
+                        android:hint="Policy No."
+                        android:id="@+id/policyNumberClaim"
                         android:nextFocusDown="@id/infirmityBuy"
                         android:background="@color/transparent"
                         android:textColor="#555" />
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
 
-                </LinearLayout>
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 
 
 
-
-        <!--Declaration of Good Health -->
+        <!-- Claim Description -->
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -289,204 +115,137 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/boogaloo"
                         android:layout_weight="1"
-                        android:text="Are you in good health?"
+                        android:fontFamily="@font/boogaloo"
+                        android:text="Claim Description"
                         android:textColor="@color/gradient_start_color"
                         android:textSize="18sp" />
 
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/goodHealthRadioGroup"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/goodhealthYes"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"/>
-                        <RadioButton
-                            android:id="@+id/goodhealthNo"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="No"/>
-                    </RadioGroup>
-
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/claimDescriptionClaim"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
                         android:fontFamily="@font/montserrat"
-                        android:textSize="15sp"
-                        android:visibility="invisible"
+                        android:hint="Please give details about the Claim"
                         android:paddingLeft="10dp"
-                        android:layout_weight="1"
-                        android:hint="Please give a details"
-                        android:id="@+id/badHealthDescription"
-                        android:nextFocusDown="@id/infirmityBuy"
-                        android:background="@color/transparent"
-                        android:textColor="#555" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!--Previous accidents-->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp"
-            android:elevation="4dp"
-            android:outlineSpotShadowColor="@color/colorPrimaryDark"
-            android:layout_margin="16dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/boogaloo"
-                        android:layout_weight="1"
-                        android:text="Have you suffered any accidents previously ?"
-                        android:textColor="@color/gradient_start_color"
-                        android:textSize="18sp" />
-
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/previousaccidentRadioGroup"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/accidentPreviousYes"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"/>
-                        <RadioButton
-                            android:id="@+id/accidentPreviousNo"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="No"/>
-                    </RadioGroup>
-
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:textSize="15sp"
-                        android:visibility="invisible"
-                        android:paddingLeft="10dp"
-                        android:layout_weight="1"
-                        android:hint="Please give a details"
-                        android:id="@+id/previousaccidentsBuy"
-                        android:nextFocusDown="@id/infirmityBuy"
-                        android:background="@color/transparent"
-                        android:textColor="#555" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-
-        <!--any recurring /chronic illness -->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp"
-            android:elevation="4dp"
-            android:outlineSpotShadowColor="@color/colorPrimaryDark"
-            android:layout_margin="16dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/boogaloo"
-                        android:text="Have you suffered any physical defect or infirmity ?"
-                        android:textColor="@color/gradient_start_color"
-                        android:textSize="18sp" />
-
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/physicaldefectRadiogroup"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/physicaldefectYes"
-                            android:layout_width="wrap_content"
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"/>
-                        <RadioButton
-                            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                            android:id="@+id/physicaldefectNo"
-                            android:fontFamily="@font/montserrat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="No"/>
-                    </RadioGroup>
-
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/infirmityBuy"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:visibility="invisible"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="Please give a details"
-                        android:nextFocusDown="@id/declarationBuyCheckbox"
                         android:textColor="#555"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--Estimated Claim Amount-->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/boogaloo"
+                        android:layout_weight="1"
+                        android:text="Claim Estimated Amount"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:textSize="15sp"
                         android:paddingLeft="10dp"
+                        android:inputType="numberDecimal"
+                        android:layout_weight="1"
+                        android:hint="Estimated Claim Amount"
+                        android:id="@+id/claimEstimateAmountClaim"
+                        android:background="@color/transparent"
+                        android:textColor="#555" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <!--Claim Date -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/boogaloo"
+                        android:layout_weight="1"
+                        android:text="Date of Claim"
+                        android:textColor="@color/gradient_start_color"
+                        android:textSize="18sp" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/claimDateClaim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Claim Date"
+                        android:paddingLeft="10dp"
+                        android:textColor="#555"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -501,232 +260,232 @@
 
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/benefactorScrollView"
-            >
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/benefactorScrollView"-->
+            <!--&gt;-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
 
-                <!--Beneficiaries / Next of Keen-->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="15dp"
-                    android:elevation="4dp"
-                    android:outlineSpotShadowColor="@color/colorPrimaryDark"
-                    android:layout_margin="16dp">
+                <!--&lt;!&ndash;Beneficiaries / Next of Keen&ndash;&gt;-->
+                <!--<androidx.cardview.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--app:cardCornerRadius="15dp"-->
+                    <!--android:elevation="4dp"-->
+                    <!--android:outlineSpotShadowColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_margin="16dp">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:fontFamily="@font/boogaloo"
-                                android:text="Next of Kin / 1st Benefactor"
-                                android:textColor="@color/gradient_start_color"
-                                android:textSize="18sp" />
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:padding="16dp">-->
+                            <!--<TextView-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginBottom="8dp"-->
+                                <!--android:fontFamily="@font/boogaloo"-->
+                                <!--android:text="Next of Kin / 1st Benefactor"-->
+                                <!--android:textColor="@color/gradient_start_color"-->
+                                <!--android:textSize="18sp" />-->
 
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/relationshipBf1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="15sp"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Relationship Benefactor 1" />
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+                                <!--<EditText android:id="@+id/relationshipBf1"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Relationship Benefactor 1" />-->
 
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/percentageBf1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="15sp"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Percentage Benefactor 1" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+                                <!--<EditText android:id="@+id/percentageBf1"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Percentage Benefactor 1" />-->
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
 
-                                <EditText android:id="@+id/mobile_noBf1"
-                                    android:layout_width="match_parent"
-                                    android:textSize="15sp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Mobile Number  Benefactor 1" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
+                                <!--<EditText android:id="@+id/mobile_noBf1"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Mobile Number  Benefactor 1" />-->
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
 
-                                <EditText android:id="@+id/emailBf1"
-                                    android:layout_width="match_parent"
-                                    android:textSize="15sp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Email Benefactor 1" />
-
-
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <CheckBox
-                                android:id="@+id/addBenefactor"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Add Benefactor"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                                <!--<EditText android:id="@+id/emailBf1"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Email Benefactor 1" />-->
 
 
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<CheckBox-->
+                                <!--android:id="@+id/addBenefactor"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:text="Add Benefactor"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--android:layout_marginBottom="5dp"-->
+                                <!--/>-->
 
-                <!--Benefactor 2-->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="15dp"
-                    android:id="@+id/benefactor2"
-                    android:visibility="invisible"
-                    android:elevation="4dp"
-                    android:outlineSpotShadowColor="@color/colorPrimaryDark"
-                    android:layout_margin="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:padding="16dp">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:fontFamily="@font/boogaloo"
-                                android:text=" Next of Kin / 2nd Benefactor"
-                                android:textColor="@color/gradient_start_color"
-                                android:textSize="18sp" />
-
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/relationshipBf2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textEmailAddress"
-                                    android:textSize="15sp"
-                                    android:hint="Relationship Benefactor 2" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/percentageBf2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="15sp"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Percentage Benefactor 2" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-
-                                <EditText android:id="@+id/mobile_noBf2"
-                                    android:layout_width="match_parent"
-                                    android:textSize="15sp"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Mobile Number  Benefactor 2" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginBottom="5dp">
-
-                                <EditText android:id="@+id/emailBf2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="15sp"
-                                    android:inputType="textEmailAddress"
-                                    android:hint="Email Benefactor 2" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <!--</LinearLayout>-->
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--&gt;-->
+                        <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
+                <!--</androidx.cardview.widget.CardView>-->
 
 
 
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2">
+                <!--&lt;!&ndash;Benefactor 2&ndash;&gt;-->
+                <!--<androidx.cardview.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--app:cardCornerRadius="15dp"-->
+                    <!--android:id="@+id/benefactor2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:elevation="4dp"-->
+                    <!--android:outlineSpotShadowColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_margin="16dp">-->
 
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:padding="16dp">-->
+                            <!--<TextView-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginBottom="8dp"-->
+                                <!--android:fontFamily="@font/boogaloo"-->
+                                <!--android:text=" Next of Kin / 2nd Benefactor"-->
+                                <!--android:textColor="@color/gradient_start_color"-->
+                                <!--android:textSize="18sp" />-->
 
 
-            </RelativeLayout>
-        </ScrollView>
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+                                <!--<EditText android:id="@+id/relationshipBf2"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:hint="Relationship Benefactor 2" />-->
+
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+                                <!--<EditText android:id="@+id/percentageBf2"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Percentage Benefactor 2" />-->
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+
+                                <!--<EditText android:id="@+id/mobile_noBf2"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Mobile Number  Benefactor 2" />-->
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+                            <!--<com.google.android.material.textfield.TextInputLayout-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                                <!--android:layout_marginBottom="5dp">-->
+
+                                <!--<EditText android:id="@+id/emailBf2"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textSize="15sp"-->
+                                    <!--android:inputType="textEmailAddress"-->
+                                    <!--android:hint="Email Benefactor 2" />-->
+                            <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+                        <!--</LinearLayout>-->
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="2">-->
+
+                        <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
+                <!--</androidx.cardview.widget.CardView>-->
+
+
+            <!--</RelativeLayout>-->
+        <!--</ScrollView>-->
 
 
 
@@ -759,7 +518,7 @@
                         android:textColor="@color/gradient_start_color"
                         android:textSize="18sp" />
 
-                    <!-- Start of KYC Collection-->
+                    <!-- Start of Applicants KYC Collection-->
                     <ScrollView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -775,15 +534,7 @@
                             android:paddingLeft="12dp"
                             android:paddingRight="12dp">
 
-                            <ImageView
-                                android:id="@+id/profile_url"
-                                android:contextClickable="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginBottom="12dp"
-                                android:src="@mipmap/add_profile_picture_icon" />
-                            <!-- Surname name Label -->
+                            <!--Applicant  Surname name Label -->
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -794,10 +545,10 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress"
-                                    android:hint="Other Names" />
+                                    android:hint="Applicant's Other Names" />
                             </com.google.android.material.textfield.TextInputLayout>
 
-                            <!-- First name Label -->
+                            <!--Applicant  First name Label -->
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -808,54 +559,38 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress"
-                                    android:hint="First Name" />
+                                    android:hint="Applicant's First Name" />
                             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-                            <!-- DOB Label -->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginTop="5dp"
-
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/dobReg"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Date of Birth"/>
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                            <!-- Email Label -->
+                            <!--Applicant Email Label -->
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/email"
+                                <EditText android:id="@+id/emailClaim"
                                     android:focusable="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress"
-                                    android:hint="Email"/>
+                                    android:hint="Applicant's Email"/>
                             </com.google.android.material.textfield.TextInputLayout>
 
 
-                            <!-- Mobile Number Label -->
+                            <!--Applicant Mobile Number Label -->
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_marginTop="5dp"
                                 >
-                                <EditText android:id="@+id/mobile_noBuy"
+                                <EditText android:id="@+id/mobile_noClaim"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
-                                    android:hint="Mobile Number"/>
+                                    android:hint="Applicant's Mobile Number"/>
 
 
 
@@ -871,51 +606,19 @@
                                 android:layout_marginTop="5dp"
 
                                 android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/id_no"
+                                <EditText android:id="@+id/id_noClaim"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
-                                    android:hint="National ID Number"/>
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                            <!-- Start Date Label -->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginTop="5dp"
-
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/startDateBuy"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:focusable="true"
-                                    android:inputType="text"
-                                    android:hint="Start Date"/>
+                                    android:hint="Applicants National ID Number"/>
                             </com.google.android.material.textfield.TextInputLayout>
 
 
 
-                            <!-- End Date Label -->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_marginTop="5dp"
-
-                                android:layout_marginBottom="5dp">
-                                <EditText android:id="@+id/endDateBuy"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="text"
-                                    android:focusable="true"
-                                    android:hint="End Date"/>
-                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
                     </ScrollView>
-                    <!-- End of KYC SCroll View -->
+                    <!-- End of Applicants KYC SCroll View -->
 
 
                 </LinearLayout>
@@ -960,7 +663,7 @@
                         android:textColorHint="#555"
                         android:textSize="18sp" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
@@ -976,7 +679,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
                         android:textSize="12sp"
-                        android:id="@+id/termsandCondtitionsBuy"
+                        android:id="@+id/termsandCondtitionsCheckboxClaim"
                         android:hint="Do you Accept the above Terms and Conditions ?"
                         android:nextFocusDown="@+id/kra_pinBuy"
                         android:background="@color/transparent"
@@ -1028,7 +731,7 @@
                         android:textSize="12sp" />
 
                     <CheckBox
-                        android:id="@+id/declarationBuyCheckbox"
+                        android:id="@+id/declarationClaimCheckbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"   android:layout_marginTop="28dp"
@@ -1053,7 +756,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_Buy"
+            android:id="@+id/btn_Claim"
             android:layout_width="200dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -1062,7 +765,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Buy Cover" />
+            android:text="Submit Claim" />
 
     </LinearLayout>
 

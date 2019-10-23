@@ -456,12 +456,12 @@ public class PurchaseCoverActivity2 extends AppCompatActivity{
                 "userRegistrationDetials", Context.MODE_PRIVATE);
         if ( sharedPref != null) {
 
-            _firstnameText.setText(sharedPref.getString("first_name", "default"));
-            _surnameText.setText(sharedPref.getString("last_name", "default"));
-            _idnoText.setText(sharedPref.getString("id_no", "default"));
-            mobile_noBuy.setText( sharedPref.getString("mobile_no","default" ));
-            _emailText.setText(sharedPref.getString("email", "default"));
-            _dobText.setText(sharedPref.getString("dob", "default"));
+            _firstnameText.setText(sharedPref.getString("first_name", ""));
+            _surnameText.setText(sharedPref.getString("last_name", ""));
+            _idnoText.setText(sharedPref.getString("id_no", ""));
+            mobile_noBuy.setText( sharedPref.getString("mobile_no","" ));
+            _emailText.setText(sharedPref.getString("email", ""));
+            _dobText.setText(sharedPref.getString("dob", ""));
         }
     }
 

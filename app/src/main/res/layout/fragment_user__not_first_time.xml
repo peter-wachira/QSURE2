@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UI.HomeActivity"
+        tools:context=".UI.HomeActivity2"
         tools:showIn="@layout/app_bar_home"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -292,4 +292,4 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+</LinearLayout>

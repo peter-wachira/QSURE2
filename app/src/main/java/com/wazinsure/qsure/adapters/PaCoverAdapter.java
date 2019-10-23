@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -151,8 +152,9 @@ public class PaCoverAdapter  extends RecyclerView.Adapter<PaCoverAdapter.MyViewH
 
 
         private void setDarkTheme (){
-            container.setBackgroundResource(R.drawable.card_bg_dark);
+            container.setBackgroundResource(R.color.black);
             innerContainer.setBackgroundResource(R.drawable.card_bg_dark);
+
 
         }
 
