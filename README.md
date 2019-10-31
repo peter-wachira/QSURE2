@@ -1,12 +1,14 @@
 # QSURE Mobile App
 #### QSURE, Oct 31st 2019
-#### By **Peter Wachira**
+#### Created By **Wazinsure**
 
 
 ## Description
 
 ```bash
-An application that allows Rangers to track wildlife sightings in the area.
+
+An application that allows users purchase and Track Personal Accident covers.
+
 ```
 ## Technologies Used
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
@@ -18,7 +20,7 @@ An application that allows Rangers to track wildlife sightings in the area.
 * `git clone <https://github.com/peter-wachira/QSURE2.git>` this repository
 * `cd QSURE`
 
-## SQLite
+## Launching the Application
 
 ```bash
 1.Launch the project in Android Studio
@@ -34,13 +36,15 @@ The applications allow users to do the following:
 5.Lodge a claim
 6.View Frequently Asked Questions 
 7.Take an insurance IQ challenge 
-6.Change themes on 
+
 
 ```
 
-## Contact Details
+## Contact Details and Documentation
 ```bash
-You can view a more detailed Documentation and User guide on GitBooks 
+
+You can view a more detailed Documentation and User guide on GitBooks   https://app.gitbook.com/@pwachira900/s/wazinsure
+
 ```
 
 ## License
