@@ -43,7 +43,9 @@ The applications allow users to do the following:
 ## Contact Details and Documentation
 ```bash
 
-You can view a more detailed Documentation and User guide on GitBooks   https://app.gitbook.com/@pwachira900/s/wazinsure
+You can view a more detailed Documentation and User guide on GitBooks  
+
+https://pwachira900.gitbook.io/wazinsure/
 
 ```
 
