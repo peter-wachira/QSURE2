@@ -1,6 +1,6 @@
 # QSURE Mobile App
 #### QSURE, Oct 31st 2019
-#### Created By **Wazinsure**
+#### Created By **Peter Wachira**
 
 
 ## Description
